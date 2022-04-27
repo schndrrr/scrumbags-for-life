@@ -1,31 +1,26 @@
-import React from 'react';
-import './App.css';
+import React from "react";
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
-  Link
+  useRoutes,
 } from "react-router-dom";
-function App() {
+import Home from "./pages/Home"
+
+const AppRoute = () => {
+  let routes = useRoutes([
+    { path: "/", element: <Home /> },
+    // ...
+  ]);
+  return routes;
+};
+
+const App = () => {
   return (
-    <div className="App">
-      {/* <Header></Header> */}
-
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-
-        {/* <Footer></Footer> */}
-    </div>
+    <Router>
+      <AppRoute />
+    </Router>
   );
-}
+};
 
 export default App;
