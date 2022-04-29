@@ -1,11 +1,11 @@
 import React from "react";
 import "./components.modules.css";
-import logo from "../../assets/CISUM_LOGO_2.svg"
+import CisumLogo from "../CisumLogo";
 
 const Header = () => {
     return (
         <div className={"container"}>
-            <img className={"logo"} src={logo}/>
+            <CisumLogo height={60} fill={"#F4951B"}/>
             <div className="buttonContainer">
                 <div className="button">
                     Anmelden
