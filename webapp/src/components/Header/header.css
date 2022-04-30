@@ -1,4 +1,4 @@
-@import "./src/less/index.modules.less";
+@import "../../main.less";
 
 .header-container {
     width: 100%;
@@ -8,19 +8,13 @@
     flex-direction: row;
     box-sizing: border-box;
     justify-content: space-between;
-
-    .buttonContainer {
-        color: white;
-        display: flex;
-        flex-direction: row;
-
-        .button {
-            padding: 1rem;
-            font-size: 1.3rem;
-        }
-    }
 }
 
 .search-container {
     width: 50%;
+}
+
+.header-menu {
+    display: flex !important;
+    flex-wrap: wrap !important;
 }

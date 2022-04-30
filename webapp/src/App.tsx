@@ -3,9 +3,8 @@ import {
   BrowserRouter as Router,
   useRoutes,
 } from "react-router-dom";
-import Home from "./pages/Home"
-import Header from "./components/Header"
-import Footer from "./components/Footer"
+import "./main.css";
+import Home from "./pages/Home";
 
 const AppRoute = () => {
   let routes = useRoutes([
@@ -17,13 +16,9 @@ const AppRoute = () => {
 
 const App = () => {
   return (
-    <>
-      <Header />
       <Router>
         <AppRoute />
       </Router>
-      <Footer />
-    </>
   );
 };
 

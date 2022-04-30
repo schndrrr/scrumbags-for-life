@@ -25,7 +25,8 @@
     "start": "concurrently --kill-others \"less-watch-compiler --config less-watcher.config.json\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-less": "less-watch-compiler --config less-watcher.config.json\\"
   },
   "eslintConfig": {
     "extends": [

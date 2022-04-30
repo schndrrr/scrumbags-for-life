@@ -1,10 +1,23 @@
 import React from "react";
-import "./components.modules.css";
+import "./header.css";
 import CisumLogo from "../CisumLogo";
 import Search from "antd/es/input/Search";
 import MenuItem from "antd/es/menu/MenuItem";
-import Menu from "antd/es/menu"
+import { Menu, MenuProps } from 'antd';
 import {Button} from "antd";
+
+const items: MenuProps['items']  = [
+    {
+        label: 'Shop',
+        key: 'shop',
+    },
+    {   label: 'Warenkorb',
+        key: 'basket'
+    },
+    {   label: 'Login',
+        key: 'login'
+    },
+];
 
 const Header = () => {
     return (
@@ -13,17 +26,7 @@ const Header = () => {
             <div className={"search-container"}>
                 <Search placeholder="input search text" enterButton maxLength={250} loading={false}/>
             </div>
-            <Menu mode="horizontal">
-                <MenuItem>
-                    Shop
-                </MenuItem>
-                <MenuItem>
-                    Warenkorb
-                </MenuItem>
-                <Button>
-                    Login
-                </Button>
-            </Menu>
+            <Menu className={'header-menu'} mode="horizontal" items={items}/>
         </div>
     )
 }
