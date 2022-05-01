@@ -3,15 +3,15 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
 
-const Home = () => {
+const Basket = () => {
 
     return (
         <>
-            <Header searchActive={true}/>
+            <Header searchActive={false}/>
 
             <Footer />
         </>
     )
 }
 
-export default Home;
+export default Basket;
