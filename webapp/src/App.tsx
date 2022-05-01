@@ -5,10 +5,14 @@ import {
 } from "react-router-dom";
 import "./main.css";
 import Home from "./pages/Home";
+import Basket from "./pages/Basket";
+import Login from "./pages/Login";
 
 const AppRoute = () => {
   let routes = useRoutes([
-    { path: "/", element: <Home /> },
+    {path: "/", element: <Home /> },
+    {path: "/basket", element: <Basket/>},
+    {path: "/login", element: <Login/>},
     // ...
   ]);
   return routes;
