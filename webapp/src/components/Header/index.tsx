@@ -72,11 +72,10 @@ const Header = (props:Props) => {
             </div>
             }
             <div>
-
                 <Menu className={'header-menu'} mode="horizontal" defaultSelectedKeys={[]} disabledOverflow={true}>
                     {props.loggedIn ?
                     <Menu.Item key={'user'}>
-                        <Link to={`../user`}>Benutzer</Link>
+                        <Link to={`../user`}>Benutzerkonto</Link>
                     </Menu.Item> :
                     <Menu.Item key={'login'} icon={<LoginOutlined/>}>
                     <Link to={`../login`}>Login</Link>
@@ -87,10 +86,6 @@ const Header = (props:Props) => {
                     <Menu.Item key={'basket'} icon={<ShoppingCartOutlined />}>
                         <Link to={`../basket`}>Warenkorb</Link>
                     </Menu.Item>
-                    <Menu.Item key={'imprint'}>
-                        <Link to={`../imprint`}>Imprint</Link>
-                    </Menu.Item>
-
                 </Menu>
             </div>
         </div>
