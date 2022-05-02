@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const userController = require("./app/controllers/user.controller")
+
 const app = express();
 var corsOptions = {
   origin: "http://localhost:8081"
@@ -18,20 +20,14 @@ db.sequelize.sync();
 
 // db.sequelize.sync({ force: true }).then(() => {
 //     console.log("Drop and re-sync db.");
-//   });
-
-
-const User = db.users;
+// });
 
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  userController.findAll(req, res);
 });
 app.post("/createUser", (req, res) => {
     console.log(req.body);
-    User.create(req).then(data => {
-        console.log(data);
-        res.send(data);
-    })
+    userController.create(req, res)
 //     res.json({ message: "Fickt euch alle",
 // status: 200 });
   });
