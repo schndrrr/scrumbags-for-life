@@ -1,3 +1,26 @@
-.test {
-    background-color: blue;
+.footer-container {
+    background-color: rgba(255, 255, 255, 0.3);
+    height: 5rem;
+    padding: 0 20px;
+    justify-content: space-between;
+}
+
+.footer-content {
+    color: #F4951E;
+    justify-content: center;
+    padding: 0 30px;
+    margin: auto;
+}
+
+.footer-content-right {
+    border-left-style: solid;
+}
+
+.footer-content-container {
+    margin: auto;
+}
+
+.footer-copy {
+    color: #F4951E;
+    padding-bottom: 10px;
 }
