@@ -65,7 +65,9 @@ const Header = (props:Props) => {
         // </div>
 
         <div className={"header-container flex-row"}>
-            <CisumLogo fill={'#F4951E'}/>
+            <Link className={'flex flex-center'} to={'../'}>
+                <CisumLogo fill={'#F4951E'}/>
+            </Link>
             {props.searchActive &&
             <div className={"search-container"}>
                 <Search placeholder="Finde deinen Lieblingssong" enterButton maxLength={250} loading={false}/>
