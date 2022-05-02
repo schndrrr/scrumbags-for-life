@@ -1,17 +1,20 @@
 import React from "react";
 import {
   BrowserRouter as Router,
-  Routes,
-  Route,
   useRoutes,
 } from "react-router-dom";
-import Home from "./pages/Home"
-import Header from "./components/Header"
-import Footer from "./components/Footer"
+import "./main.css";
+import Home from "./pages/Home";
+import Basket from "./pages/Basket";
+import Login from "./pages/Login";
+import User from "./pages/User";
 
 const AppRoute = () => {
   let routes = useRoutes([
-    { path: "/", element: <Home /> },
+    {path: "/", element: <Home /> },
+    {path: "/basket", element: <Basket/>},
+    {path: "/login", element: <Login/>},
+    {path: "/user", element: <User/>},
     // ...
   ]);
   return routes;
@@ -19,13 +22,9 @@ const AppRoute = () => {
 
 const App = () => {
   return (
-    <>
-      <Header />
       <Router>
         <AppRoute />
       </Router>
-      <Footer />
-    </>
   );
 };
 
