@@ -1,3 +1,9 @@
-.test {
-    background-color: blue;
+.footer-container {
+    background-color: rgba(255, 255, 255, 0.3);
+    height: 5rem;
+
+}
+
+.footer-content {
+    color: #F4951E;
 }
