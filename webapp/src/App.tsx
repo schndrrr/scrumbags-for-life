@@ -7,12 +7,14 @@ import "./main.css";
 import Home from "./pages/Home";
 import Basket from "./pages/Basket";
 import Login from "./pages/Login";
+import User from "./pages/User";
 
 const AppRoute = () => {
   let routes = useRoutes([
     {path: "/", element: <Home /> },
     {path: "/basket", element: <Basket/>},
     {path: "/login", element: <Login/>},
+    {path: "/user", element: <User/>},
     // ...
   ]);
   return routes;
