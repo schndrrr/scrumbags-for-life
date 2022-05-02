@@ -15,6 +15,7 @@ const AppRoute = () => {
     {path: "/basket", element: <Basket/>},
     {path: "/login", element: <Login/>},
     {path: "/user", element: <User/>},
+    
     // ...
   ]);
   return routes;
