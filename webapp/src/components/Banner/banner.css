@@ -1,0 +1,24 @@
+.banner-container {
+    background-color: rgb(111, 12, 131);
+    height: 12rem;
+    justify-content:center;
+
+}
+
+.banner-text {
+    width: 500px
+}
+    
+
+.banner-text-top {
+    display: inline-block;
+}
+
+.banner-text-middle{
+    display: fit-content;
+    
+}
+
+.banner-text-bottom{
+    display: inline-block
+}
