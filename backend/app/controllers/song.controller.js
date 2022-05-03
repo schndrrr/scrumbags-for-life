@@ -3,7 +3,7 @@ const Song = db.song;
 const Op = db.Sequelize.Op;
 // Create and Save a new Song
 exports.create = (req, res) => {
-    User.create(req).then(data => {
+    Song.create(req).then(data => {
         console.log(data);
         res.send(data);
     })

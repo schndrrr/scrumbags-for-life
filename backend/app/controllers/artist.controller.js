@@ -3,7 +3,7 @@ const Artist = db.artist;
 const Op = db.Sequelize.Op;
 // Create and Save a new Artist
 exports.create = (req, res) => {
-    User.create(req).then(data => {
+    Artist.create(req).then(data => {
         console.log(data);
         res.send(data);
     })

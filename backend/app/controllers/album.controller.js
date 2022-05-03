@@ -3,7 +3,7 @@ const Album = db.album;
 const Op = db.Sequelize.Op;
 // Create and Save a new Album
 exports.create = (req, res) => {
-    User.create(req).then(data => {
+    Album.create(req).then(data => {
         console.log(data);
         res.send(data);
     })
