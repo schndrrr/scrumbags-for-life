@@ -15,4 +15,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.users = require("./user.model.js")(sequelize, Sequelize);
+db.songs = require("./song.model.js")(sequelize, Sequelize);
+db.albums = require("./album.model.js")(sequelize, Sequelize);
+db.artists = require("./artist.model.js")(sequelize, Sequelize);
 module.exports = db;
