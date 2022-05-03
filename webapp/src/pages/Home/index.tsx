@@ -6,11 +6,11 @@ import './home.css';
 const Home = () => {
 
     return (
-        <>
+        <section className={'content'}>
             <Header searchActive={true}/>
                 <div className={'test'}> test</div>
             <Footer />
-        </>
+        </section>
     )
 }
 
