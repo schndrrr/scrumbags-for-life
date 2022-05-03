@@ -1,0 +1,11 @@
+.basket-container {
+    justify-content: space-between;
+    padding: 30px;
+    flex: 1;
+}
+
+.DataTest {
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
+}

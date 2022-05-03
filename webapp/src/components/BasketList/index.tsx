@@ -1,7 +1,6 @@
 import "./basket_list.css";
 import * as React from "react";
-import {List, message, Avatar, Skeleton} from 'antd';
-import VirtualList from 'rc-virtual-list';
+import {List, Avatar} from 'antd';
 
 const data = [
     {
@@ -23,21 +22,24 @@ const data = [
 ];
 
 const BasketList = () => {
+
     return (
-    <List
-        itemLayout="horizontal"
-        dataSource={data}
-        renderItem={item => (
-            <List.Item>
-                <List.Item.Meta
-                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                    title={<a href="https://ant.design">{item.title}</a>}
-                    description={<a href="https://ant.design">{item.description}</a>}
-                />
-                <div>0,99€</div>
-            </List.Item>
-            )}
-    />
+            <List
+                className={'basket-list'}
+                itemLayout="horizontal"
+                dataSource={data}
+                renderItem={item => (
+                    <List.Item>
+                        <List.Item.Meta
+                            avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+                            title={<a href="../">{item.title}</a>}
+                            description={item.description}
+                        />
+                        <div>0,99€</div>
+                    </List.Item>
+                )}
+            />
+
     )
 
 }
