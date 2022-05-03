@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import { Form, Input, Button, Checkbox, Radio } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import "./login.css";
-import {Link} from "react-router-dom";
 
 type LayoutType = Parameters<typeof Form>[0]['layout'];
 
@@ -38,16 +37,6 @@ const Login = () => {
                 },
                 wrapperCol: {
                     span: 14,
-                },
-            }
-            : null;
-
-    const buttonItemLayout =
-        formLayout === 'horizontal'
-            ? {
-                wrapperCol: {
-                    span: 14,
-                    offset: 4,
                 },
             }
             : null;
