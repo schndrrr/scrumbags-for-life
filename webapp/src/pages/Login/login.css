@@ -1,15 +1,15 @@
-.formsite{
+.radiobtn-closeform {
     display: flex;
-    flex-direction: column;
+    padding-bottom: 20px;
+    justify-content: space-between;
+}
+
+.ant-radio-button-wrapper:focus-within {
+    color: #F4951E;
 }
 
 .close-form{
-    display: flex;
-    flex-direction: row;
-    color: black;
-    justify-content: flex-end;
-    padding-right: 15px;
-    padding-top: 15px;
+    color: #F4951E;
     font-size: 18px;
 }
 
@@ -25,10 +25,6 @@
     background-color: #fff;
     color: #000000d9;
     border-bottom: 1px solid rgba(0,0,0,.06);
-    height: 520px;
+    height: 420px;
     width: 800px;
-}
-
-.formbox .ant-form {
-    max-width: 600px;
 }

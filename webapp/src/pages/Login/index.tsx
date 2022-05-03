@@ -23,18 +23,50 @@ const Login = () => {
     };
 
     const changeRegistered = () => {
-        setIsRegistered(isRegistered => !isRegistered);
+        setIsRegistered(true);
     };
+
+    const changeLogged = () => {
+        setIsRegistered(false);
+    }
+
+    const formItemLayout =
+        formLayout === 'horizontal'
+            ? {
+                labelCol: {
+                    span: 4,
+                },
+                wrapperCol: {
+                    span: 14,
+                },
+            }
+            : null;
+
+    const buttonItemLayout =
+        formLayout === 'horizontal'
+            ? {
+                wrapperCol: {
+                    span: 14,
+                    offset: 4,
+                },
+            }
+            : null;
 
     return (
         <>
-            <div className={"formsite"}>
+            <div>
             <div className={"holdform"}>
             <div className={"formbox"}>
+                <div className={"radiobtn-closeform"}>
+                    <Radio.Group value={formLayout}>
+                        <Radio.Button onClick={changeLogged} value="login">Anmelden</Radio.Button>
+                        <Radio.Button onClick={changeRegistered} value="register">Registrieren</Radio.Button>
+                    </Radio.Group>
                 <a href={`../`}>
                     <CloseOutlined className={"close-form"}/>
                 </a>
-            <Form className={"ant-form ant-form-horizontal"}
+                </div>
+            <Form className={"ant-form-horizontal"}
                 name="basic"
                 labelCol={{
                     span: 8,
@@ -44,70 +76,32 @@ const Login = () => {
                 }}
                 initialValues={{
                     remember: true,
+                    layout: formLayout
                 }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
+                  {...formItemLayout}
                   layout={formLayout}
                   form={form}
                   onValuesChange={onFormLayoutChange}
             >
-                <Form.Item name="layout">
-                    <Radio.Group value={formLayout}>
-                        <Radio.Button onClick={changeRegistered} value="login">Anmelden</Radio.Button>
-                        <Radio.Button onClick={changeRegistered} value="register">Registrieren</Radio.Button>
-                    </Radio.Group>
-                </Form.Item>
 
-                {isRegistered
-                    ? <div><Form.Item
-                        label="Nutzername"
-                        name="username"
+                {isRegistered &&
+                    <Form.Item
+                        label="E-Mail Adressse"
+                        name="email"
                         rules={[
                             {
                                 required: true,
-                                message: 'Bitte geben Sie ihren Nutzernamen an!',
+                                message: 'Bitte geben Sie ihre E-Mail an!',
                             },
                         ]}
                     >
-                        <Input />
+                        <Input type="email"/>
                     </Form.Item>
-
-                    <Form.Item
-                        label="Passwort"
-                        name="password"
-                        rules={[
-                            {
-                                required: true,
-                                message: 'Bitte geben Sie ihr Passwort an!',
-                            },
-                        ]}
-                    >
-                        <Input.Password />
-                    </Form.Item>
-
-                    <Form.Item
-                    name="remember"
-                    valuePropName="checked"
-                    wrapperCol={{
-                    offset: 8,
-                    span: 16,
-                }}
-                    >
-                    <Checkbox>Anmeldung speichern</Checkbox>
-                    </Form.Item>
-
-                    <Form.Item
-                    wrapperCol={{
-                    offset: 8,
-                    span: 16,
-                }}
-                    >
-                    <Button type="primary" htmlType="submit">
-                    Anmelden
-                    </Button>
-                    </Form.Item></div>
-                    : <div><Form.Item
+                }
+                <div><Form.Item
                     label="Nutzername"
                     name="username"
                     rules={[
@@ -119,18 +113,6 @@ const Login = () => {
                     >
                     <Input />
                     </Form.Item>
-                        <Form.Item
-                            label="E-Mail Adressse"
-                            name="email"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Bitte geben Sie ihre E-Mail an!',
-                                },
-                            ]}
-                        >
-                            <Input type="email"/>
-                        </Form.Item>
 
                     <Form.Item
                     label="Passwort"
@@ -166,7 +148,6 @@ const Login = () => {
                     Anmelden
                     </Button>
                     </Form.Item></div>
-                }
             </Form>
             </div>
             </div>
