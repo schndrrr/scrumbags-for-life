@@ -5,14 +5,15 @@ const Banner = () => {
     return (
         <div className={'banner-container flex'}>
             <div className={'banner-text'}>
+            
                 <div className={'banner-text-top'}>
-                    Where Words
+                    WHERE WORDS
                 </div>
                 <div className={'banner-text-middle'}>
-                    Leave Off
+                    LEAVE OFF,
                 </div>
                 <div className={'banner-text-bottom'}>
-                    Music begins
+                    MUSIC BEGINS.
                 </div>
                
             </div>
