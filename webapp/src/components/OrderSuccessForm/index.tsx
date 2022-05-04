@@ -16,7 +16,7 @@ const OrderSuccessForm = () => {
             />
             <div className={'flex-col'}>
                 <h1 className={'order-success-text'}>Dein Kauf war erfolgreich!</h1>
-                <h2 className={'order-success-text'}>Sie steht dir jederzeit in deinem <Link to={'../user'}>Benutzerkonto</Link> <br/>zum Download zur Verfügung.</h2>
+                <h2 className={'order-success-text'}>Deine Musik kann jederzeit im <Link to={'../user'}>Benutzerkonto</Link> <br/>heruntergeladen werden.</h2>
             </div>
             <Button type={'primary'} size={'large'} icon={<DownloadOutlined />}>
                 Download
