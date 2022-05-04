@@ -22,7 +22,7 @@ const Basket = () => {
                             <PaymentPicker/>
                         </div>
                         <Button type={'primary' } size={'large'}>
-                            <Link to={'../order-overview'}>Bezahlvorgang abschließen</Link>
+                            <Link to={'../payment'}>Bezahlvorgang abschließen</Link>
                         </Button>
                     </div>
                 </div>

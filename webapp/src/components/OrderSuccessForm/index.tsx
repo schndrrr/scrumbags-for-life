@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 const OrderSuccessForm = () => {
 
     return (
-        <div className={'order-success-container flex-col'}>
+        <div className={'form-container flex-col'}>
             <CheckOutlined style={{
                     color:'#F4951E',
                     fontSize:'120px',
@@ -18,9 +18,11 @@ const OrderSuccessForm = () => {
                 <h1 className={'order-success-text'}>Dein Kauf war erfolgreich!</h1>
                 <h2 className={'order-success-text'}>Deine Musik kann jederzeit im <Link to={'../user'}>Benutzerkonto</Link> <br/>heruntergeladen werden.</h2>
             </div>
-            <Button type={'primary'} size={'large'} icon={<DownloadOutlined />}>
-                Download
-            </Button>
+            <a href={'../user'}>
+                <Button style={{width:'100%'}} type={'primary'} size={'large'} icon={<DownloadOutlined />}>
+                    Download
+                </Button>
+            </a>
         </div>
     )
 }
