@@ -6,6 +6,7 @@
 @secondary-color: #1C0E39;
 @text-color: rgba(255, 255 ,255 ,0.85);
 @text-color-secondary: rgba(255, 255, 255, 0.45);
+@disabled-color: rgba(255, 255, 255, 0.25);
 
 body {
   background-color: @secondary-color !important;
@@ -16,4 +17,29 @@ body {
   display: flex;
   flex-flow: column;
   min-height: 100vh;
+}
+
+.form-container {
+  background-color: #fff;
+  border-radius: 5px;
+  min-width: 28vw;
+  min-height: 60vh;
+  padding: 30px;
+  justify-content: space-around;
+}
+
+.r-5 {
+  border-radius: 5px;
+}
+
+.r-10 {
+  border-radius: 10px;
+}
+
+.ant-radio-button-wrapper{
+  color: rgba(0, 0 ,0 ,0.85) !important;
+}
+
+.ant-input{
+  color: rgba(0, 0 ,0 ,0.85) !important;
 }
