@@ -8,6 +8,8 @@ import Home from "./pages/Home";
 import Basket from "./pages/Basket";
 import Login from "./pages/Login";
 import User from "./pages/User";
+import OrderSuccess from "./pages/OrderSuccess";
+import PayPal from "./pages/PayPal";
 
 const AppRoute = () => {
   let routes = useRoutes([
@@ -15,6 +17,9 @@ const AppRoute = () => {
     {path: "/basket", element: <Basket/>},
     {path: "/login", element: <Login/>},
     {path: "/user", element: <User/>},
+    {path: "/ordersuccess", element: <OrderSuccess/>},
+    {path: "/payment", element: <PayPal/>},
+
     // ...
   ]);
   return routes;

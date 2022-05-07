@@ -7,14 +7,18 @@ import './home.css';
 const Home = () => {
 
     return (
-        <>
+        <section className={'content'}>
             <Header searchActive={true}/>
             <Banner />
                 <div className={'test'}> test</div>
             
             <Footer />
+<<<<<<< HEAD
             
         </>
+=======
+        </section>
+>>>>>>> 7bdccba4ecc443b8ebe12515f829092d93cf007f
     )
 }
 

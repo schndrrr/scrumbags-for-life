@@ -1,0 +1,9 @@
+.basket-container {
+    padding: 30px;
+    flex: 1;
+    justify-content: space-evenly;
+}
+
+.basket-sidebar {
+    gap: 20px;
+}

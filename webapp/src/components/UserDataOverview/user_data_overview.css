@@ -1,0 +1,17 @@
+.user-data-container {
+    padding: 10px 30px 30px 30px;
+    background-color: rgba(255, 255, 255, 0.1);
+    height: max-content;
+    border-radius: 10px;
+}
+
+.data-field {
+    font-size: large;
+    padding:  0 10px;
+}
+
+.data-field-label {
+    color: #F4951E !important;
+    border-color: #F4951E !important;
+    position: relative;
+}
