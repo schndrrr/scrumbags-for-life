@@ -26123,3 +26123,8 @@ body {
 .ant-input {
   color: rgba(0, 0, 0, 0.85) !important;
 }
+.data-field-label {
+  color: #F4951E !important;
+  border-color: #F4951E !important;
+  position: relative;
+}

@@ -1,0 +1,40 @@
+.banner-container {
+    /* background-color: rgb(111, 12, 131); */
+    height: 12rem;
+    justify-content:center;
+    display: flex;
+    background-image: url(https://aroostookenergy.org/wp-content/uploads/2015/10/Desktop-hd-abstract-orange-wallpaper.jpg);
+    background-size:contain;
+    background-position:center;
+
+}
+
+.banner-text {
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    font-size: 250%;
+    font-family: Stencil Std, fantasy;
+    
+}
+    
+
+.banner-text-top {
+    color:rgb(247, 136, 45);
+    position: relative;
+    left: 150px;
+    
+}
+
+.banner-text-middle{
+    align-self: center;
+    color:rgb(19, 11, 4);
+}
+
+.banner-text-bottom{
+    align-self: flex-end;
+    position: relative;
+    right: 100px;
+    color:rgb(247, 136, 45);
+}
