@@ -6,6 +6,7 @@ import './home.css';
 import {Divider} from "antd";
 import CardList from "../../components/CardList";
 
+//some dummy data
 const data = [
     {
         title: 'Title 1',
