@@ -15,12 +15,6 @@ const Basket = () => {
     return (
         <section className={'content'}>
             <Header searchActive={false}/>
-<<<<<<< HEAD
-            
-            <Footer />
-            
-        </>
-=======
                 <div className={'basket-container flex'}>
                     <BasketList/>
                     <div className={'flex-col flex-space-between'}>
@@ -35,7 +29,6 @@ const Basket = () => {
                 </div>
             <Footer />
         </section>
->>>>>>> 7bdccba4ecc443b8ebe12515f829092d93cf007f
     )
 }
 

@@ -2150,11 +2150,7 @@ html {
   transition: color 0.3s;
 }
 .ant-breadcrumb a:hover {
-<<<<<<< HEAD
-  color: rgba(0, 0, 0, 0.85);
-=======
   color: rgba(255, 255, 255, 0.85);
->>>>>>> 7bdccba4ecc443b8ebe12515f829092d93cf007f
 }
 .ant-breadcrumb li:last-child {
   color: rgba(255, 255, 255, 0.85);
@@ -26126,4 +26122,9 @@ body {
 }
 .ant-input {
   color: rgba(0, 0, 0, 0.85) !important;
+}
+.data-field-label {
+  color: #F4951E !important;
+  border-color: #F4951E !important;
+  position: relative;
 }
