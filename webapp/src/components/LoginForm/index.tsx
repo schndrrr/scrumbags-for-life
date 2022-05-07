@@ -44,7 +44,7 @@ const LoginForm = () => {
     return (
         <>
             <div className={"holdform"}>
-                <div className={"formbox"}>
+                <div className={"formbox r-5"}>
                     <div className={"radiobtn-closeform"}>
                         <Radio.Group value={formLayout}>
                             <Radio.Button onClick={changeLogged} value="login">Anmelden</Radio.Button>
