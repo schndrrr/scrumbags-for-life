@@ -1,4 +1,5 @@
-.test {
-    height: 2000px;
-    color:aqua;
+.home-container {
+    padding: 20px 200px;
+    flex: 1;
+    justify-content: flex-start;
 }
