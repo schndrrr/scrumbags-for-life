@@ -13,7 +13,10 @@
 }
 
 .imprint-text {
+    display: flex;
     color: black;
+    padding-left: 12%;
+    padding-top: 14%;
     
     
     

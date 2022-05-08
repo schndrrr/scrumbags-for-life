@@ -13,7 +13,7 @@ const Imprint = () => {
                 <div className={'imprint-container.flex'}> 
                     <div className={'imprint-main'}> 
                         <div className={'imprint-text'}>
-                            IMPRESSUM <br/>
+                            IMPRESSUM <br/><br/><br/><br/><br/>
                             CISUM Limited <br/>
                             Ort, Straße, Land <br/>
                             Tel: <br/>
