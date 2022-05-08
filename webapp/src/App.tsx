@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import User from "./pages/User";
 import OrderSuccess from "./pages/OrderSuccess";
 import PayPal from "./pages/PayPal";
+import Imprint from "./pages/Imprint";
 
 const AppRoute = () => {
   let routes = useRoutes([
@@ -19,6 +20,7 @@ const AppRoute = () => {
     {path: "/user", element: <User/>},
     {path: "/ordersuccess", element: <OrderSuccess/>},
     {path: "/payment", element: <PayPal/>},
+    {path: "/imprint", element: <Imprint/>},
 
     // ...
   ]);

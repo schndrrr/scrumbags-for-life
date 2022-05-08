@@ -1,4 +1,21 @@
 .imprint-container {
-    height: 500px;
-    width:auto;
+    height: 780px;
+    
+}
+
+.imprint-main {
+    background-color: antiquewhite;
+    top: 0;
+    bottom: 0;
+    height: 780px;
+    
+    
+}
+
+.imprint-text {
+    color: black;
+    
+    
+    
+   
 }
