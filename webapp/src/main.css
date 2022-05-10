@@ -26098,6 +26098,12 @@ body {
   background-color: #1C0E39 !important;
   color: #fff;
 }
+h1 {
+  color: #F4951E;
+}
+h3 {
+  color: #F4951E;
+}
 .content {
   display: flex;
   flex-flow: column;
@@ -26127,4 +26133,7 @@ body {
   color: #F4951E !important;
   border-color: #F4951E !important;
   position: relative;
+}
+.ant-checkbox-wrapper {
+  color: rgba(0, 0, 0, 0.85) !important;
 }

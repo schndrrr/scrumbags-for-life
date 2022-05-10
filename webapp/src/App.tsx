@@ -11,6 +11,8 @@ import User from "./pages/User";
 import OrderSuccess from "./pages/OrderSuccess";
 import PayPal from "./pages/PayPal";
 import Imprint from "./pages/Imprint";
+import DataPrivacy from "./pages/DataPrivacy";
+import Revocation from "./pages/Revocation";
 
 const AppRoute = () => {
   let routes = useRoutes([
@@ -21,6 +23,8 @@ const AppRoute = () => {
     {path: "/ordersuccess", element: <OrderSuccess/>},
     {path: "/payment", element: <PayPal/>},
     {path: "/imprint", element: <Imprint/>},
+    {path: "/privacy", element: <DataPrivacy/>},
+    {path: "/revocation", element: <Revocation/>},
 
     // ...
   ]);

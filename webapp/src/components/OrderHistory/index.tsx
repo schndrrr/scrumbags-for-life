@@ -8,21 +8,25 @@ const data = [
         title: 'Feuermelder',
         description: 'Michael Wendler, Meuerfelder',
         price: 0.99,
+        date: '25.01.2022',
     },
     {
         title: 'Deiner Mutter',
         description: 'Florian Hager, Mutterwitze',
         price: 0.99,
+        date: '25.01.2022',
     },
     {
         title: 'I love snacks',
         description: 'Ilvi Löhr, Snacking',
         price: 0.99,
+        date: '25.01.2022',
     },
     {
         title: 'Das sieht scheiße aus',
         description: 'Thomas Hartmann, Shitstorm',
         price: 0.99,
+        date: '25.01.2022',
     },
 ];
 
@@ -48,6 +52,7 @@ const OrderHistory = () => {
                             description={item.description}
                         />
                         <div>{item.price} €</div>
+                        <div style={{paddingLeft:'30px'}}>{item.date}</div>
                     </List.Item>
                 )}
             />

@@ -19,9 +19,9 @@ const Footer = () => {
                     Über uns
                 </div>
                 <div className={'footer-content flex-column footer-content-right'} >
-                    <Link to={`../imprint`}>Datenschutz</Link>
+                    <Link to={`../privacy`}>Datenschutz</Link>
                     <Link to={`../imprint`}>Impressum</Link>
-                    <Link to={`../imprint`}>Wiederrufsbelehrung</Link>
+                    <Link to={`../revocation`}>Widerrufsrecht</Link>
                 </div>
             </div>
         </div>

@@ -10,16 +10,14 @@ const Imprint = () => {
         
             <section className={'content'}>
                 <Header searchActive={false}/>
-                <div className={'imprint-container.flex'}> 
-                    <div className={'imprint-main'}> 
-                        <div className={'imprint-text'}>
-                            IMPRESSUM <br/><br/><br/><br/><br/>
+                <div className={'imprint-container flex-col'}>
+                    <div className={'flex-col'}>
+                        <h1>IMPRESSUM</h1>
                             CISUM Limited <br/>
                             Ort, Straße, Land <br/>
                             Tel: <br/>
                             E-Mail: support@bestmusiceuw.com <br/>
                             © Gymshark Limited, registriert in England (eingetragene Nummer: 08130873, eingetragener Firmensitz: GSHQ, Blythe Valley Park, 3 Central Boulevard, Solihull, B90 8AB, England
-                        </div>
                     </div>
                 </div>
 
