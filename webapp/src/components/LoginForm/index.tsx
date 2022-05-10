@@ -86,7 +86,7 @@ const LoginForm = () => {
                                 },
                             ]}
                         >
-                            <Input type="email"/>
+                            <Input className={'ant-input-dark'} type="email"/>
                         </Form.Item>
                         }
                         <div>
@@ -100,7 +100,7 @@ const LoginForm = () => {
                                     },
                                 ]}
                             >
-                                <Input />
+                                <Input className={'ant-input-dark'}/>
                             </Form.Item>
 
                             <Form.Item
