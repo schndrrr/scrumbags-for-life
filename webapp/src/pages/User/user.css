@@ -1,0 +1,10 @@
+.user-container {
+    margin: 0 250px;
+    flex: 1;
+    padding: 30px;
+    /*min-width: 100%;*/
+}
+
+.tabPane {
+    margin: 50px 0;
+}

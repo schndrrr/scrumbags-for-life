@@ -1,5 +1,5 @@
 import {Avatar, List} from "antd";
-import {DownloadOutlined} from "@ant-design/icons";
+import {ShoppingCartOutlined, HeartFilled} from "@ant-design/icons";
 import * as React from "react";
 
 //dummy data
@@ -28,7 +28,7 @@ const data = [
 
 
 
-const OrderHistory = () => {
+const Favorites = () => {
 
     return (
         <div className={'basket-list'}>
@@ -37,10 +37,11 @@ const OrderHistory = () => {
                 dataSource={data}
                 renderItem={item => (
                     <List.Item>
-                        <DownloadOutlined style={{
+                        <HeartFilled style={{
                             color:'#F4951E',
                             fontSize:'24px',
-                            paddingRight: '15px'}}
+                            paddingRight: '15px'
+                        }}
                         />
                         <List.Item.Meta
                             avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
@@ -48,6 +49,11 @@ const OrderHistory = () => {
                             description={item.description}
                         />
                         <div>{item.price} €</div>
+                        <ShoppingCartOutlined style={{
+                            color:'#F4951E',
+                            fontSize:'24px',
+                            paddingLeft: '8px'}}
+                        />
                     </List.Item>
                 )}
             />
@@ -58,4 +64,4 @@ const OrderHistory = () => {
 
 }
 
-export default OrderHistory;
+export default Favorites;
