@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Form, Input, Button, Checkbox, Radio } from 'antd';
+import { Form, Input, Button } from 'antd';
 import "./user-data-form.css";
 
 const UserDataForm = () => {
@@ -14,17 +14,19 @@ const UserDataForm = () => {
                 // onValuesChange={onFormLayoutChange}
                 // size={componentSize as SizeType}
             >
-                <Form.Item className={''} label="Vorname">
+                <Form.Item className={'dark-ant-form-item-label'} label="Vorname">
                     <Input />
                 </Form.Item>
-                <Form.Item label="Nachname">
+                <Form.Item className={'dark-ant-form-item-label'} label="Nachname">
                     <Input />
                 </Form.Item>
-                <Form.Item label="E-Mail Adresse">
+                <Form.Item className={'dark-ant-form-item-label'} label="E-Mail Adresse">
                     <Input />
                 </Form.Item>
             </Form>
-            <Button type={'primary'}>Speichern</Button>
+            <div className={'flex flex-end'}>
+                <Button type={'primary'} size={'large'}>Speichern</Button>
+            </div>
         </div>
 
 
