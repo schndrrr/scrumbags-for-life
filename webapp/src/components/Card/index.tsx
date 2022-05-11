@@ -18,7 +18,7 @@ const Cards = () => {
                     />
                 }
                 actions={[
-                    <HeartOutlined key="heart" />,
+                    <HeartOutlined key="heart" className={"heart-icon"}/>,
                     <Button type="primary" icon={<ImportOutlined />}>
                         0.99 €
                     </Button>
