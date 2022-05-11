@@ -1,7 +1,7 @@
 import React from "react";
 import './card.css';
-import { Card, Avatar, Button, Progress } from 'antd';
-import { ImportOutlined, HeartOutlined, StepBackwardOutlined, PlayCircleOutlined, StepForwardOutlined, RetweetOutlined } from '@ant-design/icons';
+import { Card, Button, Progress } from 'antd';
+import { ImportOutlined, HeartOutlined, StepBackwardOutlined, PlayCircleOutlined, StepForwardOutlined } from '@ant-design/icons';
 
 const { Meta } = Card;
 
