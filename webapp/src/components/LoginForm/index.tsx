@@ -77,7 +77,7 @@ const LoginForm = () => {
 
                         {isRegistered &&
                         <Form.Item
-                            label="E-Mail Adressse"
+                            label="E-Mail Adresse"
                             name="email"
                             rules={[
                                 {
@@ -113,7 +113,7 @@ const LoginForm = () => {
                                     },
                                 ]}
                             >
-                                <Input.Password />
+                                <Input.Password className={'ant-input-dark'}/>
                             </Form.Item>
 
                             <Form.Item
