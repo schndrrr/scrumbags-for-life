@@ -1,3 +1,3 @@
 
 after restart:
-    mysql.server start    
+    mysql.server start

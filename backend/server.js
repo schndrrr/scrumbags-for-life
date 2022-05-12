@@ -1,10 +1,12 @@
 const express = require("express");
 const cors = require("cors");
-const userController = require("./app/controllers/user.controller")
-
+const axios = require('axios').default;
+const userController = require("./app/controllers/user.controller");
+const refreshToken = require("./app/helpers/refreshToken");
+const search = require("./app/helpers/search");
 const app = express();
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:8081",
 };
 app.use(cors(corsOptions));
 // parse requests of content-type - application/json
@@ -16,21 +18,36 @@ app.use(express.urlencoded({ extended: true }));
 const db = require("./app/models");
 db.sequelize.sync();
 
-// maybe like this 
+// maybe like this
 
 // db.sequelize.sync({ force: true }).then(() => {
 //     console.log("Drop and re-sync db.");
 // });
 
-app.get("/", (req, res) => {
+
+// returns all users
+app.get("/users", (req, res) => {
   userController.findAll(req, res);
 });
-app.post("/createUser", (req, res) => {
-    console.log(req.body);
-    userController.create(req, res)
-//     res.json({ message: "Fickt euch alle",
-// status: 200 });
-  });
+
+// creates new user
+app.post("/users", (req, res) => {
+  userController.create(req, res);
+});
+
+// returns user for id
+app.get("/user/:id", (req, res) => {
+    var id = req.params.id;
+    console.log(id);
+});
+
+app.get("/search/:q", (req, res) => {
+  var q = req.params.q;
+
+  refreshToken();
+  search(q, "BQBRMt_CA1PGz6aFkTvs-66mS7THzMb12b0zVz-9QHdUuVVyx6CC88lRPAYHyZqK1JxgX3gMjIwZnRCUifo", res);
+});
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
