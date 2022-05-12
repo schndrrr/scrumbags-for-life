@@ -6,7 +6,7 @@ const refreshToken = require("./app/helpers/refreshToken");
 const search = require("./app/helpers/search");
 const app = express();
 var corsOptions = {
-  origin: "http://localhost:8081",
+  origin: "http://localhost:3000",
 };
 app.use(cors(corsOptions));
 // parse requests of content-type - application/json
