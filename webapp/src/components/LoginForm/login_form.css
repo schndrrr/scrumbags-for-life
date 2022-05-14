@@ -28,3 +28,7 @@
     height: 420px;
     width: 800px;
 }
+
+.ant-input-dark #basic_password {
+    color:black !important;
+}

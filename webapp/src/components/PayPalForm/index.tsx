@@ -11,12 +11,12 @@ const PayPalForm = () => {
             <PayPalLogo style={{margin:'0 auto', width:'280px'}}/>
             <div>
                 <h1 className={'order-success-text'}>Zahle mit PayPal</h1>
-                <h3 className={'order-success-text'}>Gib deine E-Mail Adresse oder Telefonnummer ein um zu starten.</h3>
+                <h3 className={'order-success-text ant-input-dark'}>Gib deine E-Mail Adresse oder Telefonnummer ein um zu starten.</h3>
             </div>
             <div className={'flex-col mail-input-wrapper'}>
                 <Form>
-                    <Form.Item name={'email'}  rules={[{ type: 'email' }]}>
-                        <Input defaultValue={'deineEmail@beispiel.com'} size={'large'}/>
+                    <Form.Item  name={'email'}  rules={[{ type: 'email' }]}>
+                        <Input className={'ant-input-dark'} defaultValue={'deineEmail@beispiel.com'} size={'large'}/>
                     </Form.Item>
                 </Form>
                 <Button type={'primary'} size={'large'}>
