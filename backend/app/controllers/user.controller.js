@@ -4,7 +4,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new User
 exports.create = (req, res) => {
   console.log("creating new user");
-  User.create(req)
+  User.create(req.body)
     .then((r) => {
       res.send(r);
     })

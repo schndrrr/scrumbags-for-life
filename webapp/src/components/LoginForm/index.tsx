@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { Form, Input, Button, Checkbox, Radio } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import "./login_form.css";
+import userservice from "../../services/user.service";
 
 type LayoutType = Parameters<typeof Form>[0]['layout'];
 
@@ -9,8 +10,9 @@ const LoginForm = () => {
     const [form] = Form.useForm();
     const [formLayout, setFormLayout] = useState<LayoutType>('horizontal');
     const [isRegistered, setIsRegistered] = useState(false);
-    const onFinish = (values:any) => {
-        console.log('Success:', values);
+    const onFinish = (values:any) => {       
+       if (isRegistered){
+        userservice.createUser(values);}
     };
 
     const onFinishFailed = (errorInfo:any) => {

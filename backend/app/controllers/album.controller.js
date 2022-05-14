@@ -3,14 +3,15 @@ const Album = db.album;
 const Op = db.Sequelize.Op;
 // Create and Save a new Album
 exports.create = (req, res) => {
-    Album.create(req).then(data => {
-        console.log(data);
-        res.send(data);
-    })
 };
 // Retrieve all Albums from the database.
 exports.findAll = (req, res) => {
-  
+    console.log("get all Albums");
+    Album.findAll()
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((e) => res.send(e));
 };
 // Find a single Album with an id
 exports.findOne = (req, res) => {
