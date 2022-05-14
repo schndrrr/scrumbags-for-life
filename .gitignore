@@ -2,3 +2,5 @@
 .idea/_Scrumbags_Repo.iml
 .idea/modules.xml
 .idea/vcs.xml
+
+./webapp/src/main.css
