@@ -2,12 +2,22 @@ const express = require("express");
 const cors = require("cors");
 const axios = require('axios').default;
 const userController = require("./app/controllers/user.controller");
+const songController = require("./app/controllers/song.controller");
+const albumController = require("./app/controllers/album.controller");
+const artistController = require("./app/controllers/artist.controller");
 const refreshToken = require("./app/helpers/refreshToken");
 const search = require("./app/helpers/search");
 const app = express();
 var corsOptions = {
   origin: "http://localhost:8081",
 };
+
+
+let tokenObject = {
+  access_token: 'BQAhOckrXD68piSOp-PMCqITMfvvQgpD2ApwXTD9bQylO366oTI17Qc5RXMnf5gC6zPWUhJVzUHe4u6mz5w',
+  expires_at: new Date('01.01.2000')
+}
+
 app.use(cors(corsOptions));
 // parse requests of content-type - application/json
 app.use(express.json());
@@ -16,6 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 // simple route
 
 const db = require("./app/models");
+const checkToken = require("./app/helpers/checkToken");
 db.sequelize.sync();
 
 // maybe like this
@@ -41,12 +52,27 @@ app.get("/user/:id", (req, res) => {
     console.log(id);
 });
 
-app.get("/search/:q", (req, res) => {
+app.get("/search/:q", async (req, res) => {
   var q = req.params.q;
 
-  refreshToken();
-  search(q, "BQBRMt_CA1PGz6aFkTvs-66mS7THzMb12b0zVz-9QHdUuVVyx6CC88lRPAYHyZqK1JxgX3gMjIwZnRCUifo", res);
+  if(!checkToken(tokenObject)) {
+    tokenObject = await refreshToken();  
+  }
+  search(q, tokenObject.access_token, res, ["album", "track", "artist"]); // ["album", "track", "artist"]
 });
+
+app.get("/songs", async (req, res) => {
+  songController.findAll(req, res);
+});
+
+app.get("/albums", async (req, res) => {
+  albumController.findAll(req, res);
+});
+
+app.get("/artists", async (req, res) => {
+  artistController.findAll(req, res);
+});
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

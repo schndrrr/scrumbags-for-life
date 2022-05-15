@@ -1,8 +1,9 @@
 const db = require("../models");
-const Album = db.album;
+const Album = db.albums;
 const Op = db.Sequelize.Op;
 // Create and Save a new Album
-exports.create = (req, res) => {
+exports.create = (req) => {
+  Album.create(req).then(() => {}).catch(error => console.log(error));
 };
 // Retrieve all Albums from the database.
 exports.findAll = (req, res) => {
