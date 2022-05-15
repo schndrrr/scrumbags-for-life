@@ -9,9 +9,9 @@ type LayoutType = Parameters<typeof Form>[0]['layout'];
 const LoginForm = () => {
     const [form] = Form.useForm();
     const [formLayout, setFormLayout] = useState<LayoutType>('horizontal');
-    const [isRegistered, setIsRegistered] = useState(false);
+    const [newUser, setNewUser] = useState(false);
     const onFinish = (values:any) => {       
-       if (isRegistered){
+       if (newUser){
         userservice.createUser(values);}
     };
 
@@ -24,11 +24,11 @@ const LoginForm = () => {
     };
 
     const changeRegistered = () => {
-        setIsRegistered(true);
+        setNewUser(true);
     };
 
     const changeLogged = () => {
-        setIsRegistered(false);
+        setNewUser(false);
     }
 
     const formItemLayout =
@@ -77,7 +77,7 @@ const LoginForm = () => {
                           onValuesChange={onFormLayoutChange}
                     >
 
-                        {isRegistered &&
+                        {newUser &&
                         <Form.Item
                             label="E-Mail Adresse"
                             name="email"
