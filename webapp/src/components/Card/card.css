@@ -6,8 +6,9 @@
 }
 
 .card-player-icon {
-    font-size: 50px;
+    font-size: 45px;
     margin-right: 5px;
+    color: #F4951E;
 }
 
 .ant-card-meta-detail {
@@ -49,4 +50,5 @@
 span.anticon.anticon-heart.heart-icon{
     font-size: 23px;
     padding-top: 3px;
+    color: #F4951E;
 }

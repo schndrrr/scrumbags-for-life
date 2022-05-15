@@ -1,11 +1,21 @@
-import React from "react";
+import React, {PropsWithChildren} from "react";
 import './card.css';
 import { Card, Button, Progress } from 'antd';
 import { ImportOutlined, HeartOutlined, StepBackwardOutlined, PlayCircleOutlined, StepForwardOutlined } from '@ant-design/icons';
 
+type Props = {
+    imgSrc: string;
+    title: string;
+    price: number;
+    description: string;
+    duration?: number;
+}
+
 const { Meta } = Card;
 
-const Cards = () => {
+const Cards = (props: Props) => {
+
+    const {imgSrc, price, description, title, duration} = props;
 
     return (
         <>
@@ -14,25 +24,25 @@ const Cards = () => {
                 cover={
                     <img
                         alt="example"
-                        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                        src={ imgSrc}
                     />
                 }
                 actions={[
                     <HeartOutlined key="heart" className={"heart-icon"}/>,
                     <Button type="primary" icon={<ImportOutlined />}>
-                        0.99 €
+                        {price} €
                     </Button>
                 ]}
             >
                 <Meta
-                    title="Happy"
-                    description="Happier Than Ever - Billie Eilish"
+                    title={title}
+                    description={description}
                 />
               <div className={"card-player-progressbar"}>
                   <div className={"card-player"}>
-                    <StepBackwardOutlined className={"card-player-icon"}/>
-                      <PlayCircleOutlined className={"card-player-icon"}/>
-                      <StepForwardOutlined className={"card-player-icon"}/>
+                    {/*<StepBackwardOutlined className={"card-player-icon"}/>*/}
+                    <PlayCircleOutlined className={"card-player-icon"}/>
+                    {/*<StepForwardOutlined className={"card-player-icon"}/>*/}
                   </div>
                   <div className={"card-progressbar"}>
                       <Progress percent={80} showInfo={false}/>

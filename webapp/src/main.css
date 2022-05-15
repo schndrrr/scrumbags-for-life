@@ -2150,9 +2150,7 @@ html {
   transition: color 0.3s;
 }
 .ant-breadcrumb a:hover {
-
-  color: rgba(0, 0, 0, 0.85);
-
+  color: rgba(255, 255, 255, 0.85);
 }
 .ant-breadcrumb li:last-child {
   color: rgba(255, 255, 255, 0.85);
@@ -13439,6 +13437,7 @@ _:-ms-fullscreen .ant-picker-range-wrapper .ant-picker-year-panel .ant-picker-ce
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  color: rgba(255, 255, 255, 0.85);
   font-size: 14px;
   font-variant: tabular-nums;
   line-height: 1.5715;
@@ -13451,7 +13450,7 @@ _:-ms-fullscreen .ant-picker-range-wrapper .ant-picker-year-panel .ant-picker-ce
   flex-direction: row-reverse;
   align-items: center;
   width: 100%;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(0, 0, 0, 0.85);
   list-style: none;
   background: rgba(0, 0, 0, 0.1);
   pointer-events: auto;
@@ -13462,7 +13461,7 @@ _:-ms-fullscreen .ant-picker-range-wrapper .ant-picker-year-panel .ant-picker-ce
   cursor: pointer;
 }
 .ant-image-preview-operations-operation-disabled {
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(0, 0, 0, 0.25);
   pointer-events: none;
 }
 .ant-image-preview-operations-operation:last-of-type {
@@ -13488,7 +13487,7 @@ _:-ms-fullscreen .ant-picker-range-wrapper .ant-picker-year-panel .ant-picker-ce
   width: 44px;
   height: 44px;
   margin-top: -22px;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(0, 0, 0, 0.85);
   background: rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   cursor: pointer;
@@ -13496,7 +13495,7 @@ _:-ms-fullscreen .ant-picker-range-wrapper .ant-picker-year-panel .ant-picker-ce
 }
 .ant-image-preview-switch-left-disabled,
 .ant-image-preview-switch-right-disabled {
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(0, 0, 0, 0.25);
   cursor: not-allowed;
 }
 .ant-image-preview-switch-left-disabled > .anticon,
@@ -16552,7 +16551,7 @@ textarea.ant-mentions {
   display: none;
 }
 .ant-menu.ant-menu-inline-collapsed-tooltip a {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(0, 0, 0, 0.85);
 }
 .ant-menu.ant-menu-inline-collapsed .ant-menu-item-group-title {
   padding-right: 4px;
@@ -25773,7 +25772,7 @@ div.ant-typography-edit-content.ant-typography-rtl {
   z-index: 10;
   width: 16px;
   margin: 0 4px;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(0, 0, 0, 0.85);
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s;
@@ -26138,4 +26137,7 @@ h3 {
 }
 .ant-checkbox-wrapper {
   color: rgba(0, 0, 0, 0.85) !important;
+}
+.ant-card-meta-description {
+  color: rgba(0, 0, 0, 0.85);
 }
