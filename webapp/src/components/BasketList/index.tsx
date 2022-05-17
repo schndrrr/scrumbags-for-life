@@ -33,6 +33,7 @@ const BasketList = () => {
             <List
                 itemLayout="horizontal"
                 dataSource={data}
+                // renders items based on backend data
                 renderItem={item => (
                     <List.Item>
                         <List.Item.Meta
@@ -41,6 +42,7 @@ const BasketList = () => {
                             description={item.description}
                         />
                         <div>{item.price} €</div>
+                        {/*remove item from basket*/}
                         <DeleteOutlined style={{
                             color:'#F4951E',
                             fontSize:'16px',
@@ -49,6 +51,7 @@ const BasketList = () => {
                     </List.Item>
                 )}
             />
+            {/*needs to be calculated automatically*/}
             <div className={'order-sum'}>
                 3.96 €
             </div>

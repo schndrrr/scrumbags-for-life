@@ -1,12 +1,9 @@
 const db = require("../models");
-const Song = db.song;
+const Song = db.songs;
 const Op = db.Sequelize.Op;
 // Create and Save a new Song
-exports.create = (req, res) => {
-  Song.create(req).then((data) => {
-    console.log(data);
-    res.send(data);
-  });
+exports.create = (req) => {
+  Song.create(req).then(() => {}).catch(error => console.log(error));
 };
 // Retrieve all Songs from the database.
 exports.findAll = (req, res) => {
@@ -18,7 +15,11 @@ exports.findAll = (req, res) => {
     .catch((e) => res.send(e));
 };
 // Find a single Song with an id
-exports.findOne = (req, res) => {};
+exports.findOne = (req, res) => {
+  Song.findOne({ where: { name: req } }).then((data) => {
+    res.send(data);
+  })
+};
 // Update a Song by the id in the request
 exports.update = (req, res) => {};
 // Delete a Song with the specified id in the request

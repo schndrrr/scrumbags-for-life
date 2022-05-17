@@ -2,7 +2,7 @@ import {Avatar, List} from "antd";
 import {DownloadOutlined} from "@ant-design/icons";
 import * as React from "react";
 
-//dummy data
+//dummy data @TODO needed to changed with properties like card component
 const data = [
     {
         title: 'Feuermelder',

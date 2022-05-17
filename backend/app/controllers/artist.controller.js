@@ -1,8 +1,10 @@
 const db = require("../models");
-const Artist = db.artist;
+const Artist = db.artists;
 const Op = db.Sequelize.Op;
 // Create and Save a new Artist
-exports.create = (req, res) => {};
+exports.create = (req) => {
+  Artist.create(req).then(() => {}).catch(error => console.log(error));
+};
 // Retrieve all Artists from the database.
 exports.findAll = (req, res) => {
   console.log("get all Artists");

@@ -4,6 +4,11 @@ import PayPalLogo from "../PayPalLogo";
 import {Form, Input} from "antd";
 import "./paypal_form.css";
 
+//@TODO email check function???
+const checkMail = () => {
+    console.log('Login successful')
+}
+
 const PayPalForm = () => {
 
     return (
@@ -19,7 +24,8 @@ const PayPalForm = () => {
                         <Input className={'ant-input-dark'} defaultValue={'deineEmail@beispiel.com'} size={'large'}/>
                     </Form.Item>
                 </Form>
-                <Button type={'primary'} size={'large'}>
+                {/*maybe build button in a form item?*/}
+                <Button onClick={checkMail} type={'primary'} size={'large'}>
                     <a href={'../ordersuccess'}>Bezahlung via PayPal abschließen</a>
                 </Button>
             </div>
