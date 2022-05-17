@@ -22,7 +22,11 @@ exports.findAll = (req, res) => {
     .catch((e) => res.send(e));
 };
 // Find a single User with an id
-exports.findOne = (req, res) => {};
+exports.findOne = (req, res) => {
+  User.findOne({ where: { id: req } }).then((data) => {
+    res.send(data);
+  })
+};
 // Update a User by the id in the request
 exports.update = (req, res) => {};
 // Delete a User with the specified id in the request
