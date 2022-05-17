@@ -31,9 +31,9 @@ db.sequelize.sync();
 
 // maybe like this
 
-// db.sequelize.sync({ force: true }).then(() => {
-//     console.log("Drop and re-sync db.");
-// });
+db.sequelize.sync({ force: true }).then(() => {
+    console.log("Drop and re-sync db.");
+});
 
 
 // returns all users
@@ -42,23 +42,34 @@ app.get("/users", (req, res) => {
 });
 
 // creates new user
-app.post("/users", (req, res) => {
+app.post("/user", (req, res) => {
   userController.create(req, res);
 });
 
 // returns user for id
-app.get("/user/:id", (req, res) => {
-    var id = req.params.id;
-    console.log(id);
+app.get("/user", (req, res) => {
+    let id;
+    if (req.query.id) {
+      id = req.query.id;
+    } else {
+      res.send({message: "no id given"});
+    }
+    userController.findOne(id, res);
 });
 
 app.get("/search/:q", async (req, res) => {
-  var q = req.params.q;
+  let q = req.params.q;
+  let type = [];
+  if (req.query.type) {
+    type = req.query.type.split(",");
+  } else {
+    type = ["album", "track", "artist"];
+  }
 
   if(!checkToken(tokenObject)) {
     tokenObject = await refreshToken();  
   }
-  search(q, tokenObject.access_token, res, ["album", "track", "artist"]); // ["album", "track", "artist"]
+  search(q, tokenObject.access_token, res, type);
 });
 
 app.get("/songs", async (req, res) => {
