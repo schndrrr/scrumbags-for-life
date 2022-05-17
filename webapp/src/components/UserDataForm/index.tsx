@@ -8,7 +8,7 @@ const UserDataForm = () => {
 
     //@TODO update function, id needs to be a variable
     const onFinish = (values:any) => {
-            userservice.updateUser(1, values);
+            userservice.updateUser(3, values);
             console.log(values)
     };
 
@@ -20,10 +20,10 @@ const UserDataForm = () => {
                 layout="horizontal"
                 onFinish={onFinish}
             >
-                <Form.Item className={'dark-ant-form-item-label'} label="Vorname" name="username">
+                <Form.Item className={'dark-ant-form-item-label'} label="Vorname" name="firstname">
                     <Input />
                 </Form.Item>
-                <Form.Item className={'dark-ant-form-item-label'} label="Nachname">
+                <Form.Item className={'dark-ant-form-item-label'} label="Nachname" name={"lastname"}>
                     <Input />
                 </Form.Item>
                 <Form.Item className={'dark-ant-form-item-label'} label="E-Mail Adresse" name="email">
