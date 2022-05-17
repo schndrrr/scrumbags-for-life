@@ -1,6 +1,8 @@
 import http from "../http-common";
 
 class UserDataService{
+
+    // User
     createUser(data) {
         console.log (process.env.BASE_URL);
         return http.post("/users", data);
@@ -25,5 +27,15 @@ class UserDataService{
     deleteUser(id) {
         return http.delete("/user/${id}")
     }
+
+
+
+    // Song
+    
+
+
+
+
+    
 }
 export default new UserDataService();
