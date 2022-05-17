@@ -11,66 +11,20 @@ type Props = {
     loggedIn?: boolean
 }
 
-// type MenuItem = Required<MenuProps>['items'][number];
-//
-// function getItem(
-//     label: React.ReactNode,
-//     key?: React.Key | null,
-//     icon?: React.ReactNode,
-//     children?: MenuItem[],
-// ): MenuItem {
-//     return {
-//         key,
-//         icon,
-//         children,
-//         label,
-//     } as MenuItem;
-// }
-//
-// const items: MenuProps['items']  = [
-//
-//     getItem(
-//         <Link to={`../login`}>Login</Link>,
-//         'login',
-//         <LoginOutlined/>
-//     ),
-//     getItem(
-//         <Link to={`../`}>Shop</Link>,
-//         'shop',
-//     ),
-//     getItem(
-//         <Link to={`../basket`}>Warenkorb</Link>,
-//         'basket',
-//         <ShoppingCartOutlined />,
-//     ),
-//     getItem(
-//         <Link to={`../imprint`}>Impressum</Link>,
-//         'imprint',
-//     ),
-// ];
+const onSearch = (values:any) => {
+    console.log(values);
+}
 
 const Header = (props:Props) => {
 
     return (
-        // <div className={"header-container flex-row"}>
-        //     <CisumLogo fill={'#F4951E'}/>
-        //     {props.searchActive &&
-        //     <div className={"search-container"}>
-        //         <Search placeholder="Finde deinen Lieblingssong" enterButton maxLength={250} loading={false}/>
-        //     </div>
-        //     }
-        //     <div>
-        //         <Menu className={'header-menu'} mode="horizontal" items={items} defaultSelectedKeys={[]} disabledOverflow={true}/>
-        //     </div>
-        // </div>
-
         <div className={"header-container flex-row"}>
             <Link className={'flex flex-center'} to={'../'}>
                 <CisumLogo fill={'#F4951E'}/>
             </Link>
             {props.searchActive &&
             <div className={"search-container"}>
-                <Search placeholder="Finde deinen Lieblingssong" enterButton maxLength={250} loading={false}/>
+                <Search onSearch={onSearch} placeholder="Finde deinen Lieblingssong" enterButton maxLength={250} loading={false}/>
             </div>
             }
             <div>
