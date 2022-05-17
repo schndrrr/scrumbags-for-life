@@ -19,14 +19,13 @@ const Cards = (props: Props) => {
     const {imgSrc, price, description, title, duration} = props;
 
     return (
-        <>
-          <div> <Card
+              <Card
                 style={{ width: 280}}
                 cover={
                     <img
-                        height={200}
+                        height={280}
                         alt="example"
-                        src={ imgSrc}
+                        src={imgSrc}
                     />
                 }
                 actions={[
@@ -53,8 +52,6 @@ const Cards = (props: Props) => {
                   {/*</div>*/}
               </div>
             </Card>
-          </div>
-        </>
     )
 }
 

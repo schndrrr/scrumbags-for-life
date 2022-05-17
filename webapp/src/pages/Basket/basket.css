@@ -1,9 +1,15 @@
 .basket-container {
-    padding: 30px;
+    padding: 30px 0;
     flex: 1;
     justify-content: space-evenly;
 }
 
 .basket-sidebar {
     gap: 20px;
+}
+
+@media all and (min-width: 1000px) {
+    .home-container {
+        padding: 30px;
+    }
 }
