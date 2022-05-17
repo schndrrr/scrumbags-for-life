@@ -3,6 +3,7 @@ import './card.css';
 import { Card, Button, Progress } from 'antd';
 import { ImportOutlined, HeartOutlined, StepBackwardOutlined, PlayCircleOutlined, StepForwardOutlined } from '@ant-design/icons';
 
+// backend data
 type Props = {
     imgSrc: string;
     title: string;
@@ -20,9 +21,10 @@ const Cards = (props: Props) => {
     return (
         <>
           <div> <Card
-                style={{ width: 300 }}
+                style={{ width: 280}}
                 cover={
                     <img
+                        height={200}
                         alt="example"
                         src={ imgSrc}
                     />
@@ -39,14 +41,16 @@ const Cards = (props: Props) => {
                     description={description}
                 />
               <div className={"card-player-progressbar"}>
+                  {/*player for sound example, skipping doesn't make much sense in single a song player*/}
                   <div className={"card-player"}>
                     {/*<StepBackwardOutlined className={"card-player-icon"}/>*/}
                     <PlayCircleOutlined className={"card-player-icon"}/>
                     {/*<StepForwardOutlined className={"card-player-icon"}/>*/}
                   </div>
-                  <div className={"card-progressbar"}>
-                      <Progress percent={80} showInfo={false}/>
-                  </div>
+                  {/*time progress, is it needed?*/}
+                  {/*<div className={"card-progressbar"}>*/}
+                  {/*    <Progress percent={80} showInfo={false}/>*/}
+                  {/*</div>*/}
               </div>
             </Card>
           </div>

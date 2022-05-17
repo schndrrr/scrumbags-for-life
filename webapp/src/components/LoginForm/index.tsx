@@ -10,27 +10,29 @@ const LoginForm = () => {
     const [form] = Form.useForm();
     const [formLayout, setFormLayout] = useState<LayoutType>('horizontal');
     const [newUser, setNewUser] = useState(false);
+
+    //sending form data to backend
     const onFinish = (values:any) => {       
        if (newUser){
         userservice.createUser(values);}
     };
 
+    //function on failing request
     const onFinishFailed = (errorInfo:any) => {
         console.log('Failed:', errorInfo);
     };
 
-    const onFormLayoutChange = ({ layout }: { layout: LayoutType }) => {
-        setFormLayout(layout);
-    };
-
+    //activate registration form
     const changeRegistered = () => {
         setNewUser(true);
     };
 
+    //activate login form
     const changeLogged = () => {
         setNewUser(false);
     }
 
+    //form layout
     const formItemLayout =
         formLayout === 'horizontal'
             ? {
@@ -74,7 +76,6 @@ const LoginForm = () => {
                           {...formItemLayout}
                           layout={formLayout}
                           form={form}
-                          onValuesChange={onFormLayoutChange}
                     >
 
                         {newUser &&

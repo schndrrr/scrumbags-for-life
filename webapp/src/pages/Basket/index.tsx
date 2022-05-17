@@ -8,7 +8,10 @@ import PaymentPicker from "../../components/PaymentPicker";
 import {Button} from "antd";
 import {Link} from "react-router-dom";
 
-
+//@TODO onTransaction function
+const onTransaction = () => {
+    console.log('onTransaction')
+}
 
 const Basket = () => {
 
@@ -22,7 +25,7 @@ const Basket = () => {
                             <UserDataOverview/>
                             <PaymentPicker/>
                         </div>
-                        <Button type={'primary' } size={'large'}>
+                        <Button onClick={onTransaction} type={'primary' } size={'large'}>
                             <Link to={'../payment'}>Bezahlvorgang abschließen</Link>
                         </Button>
                     </div>
