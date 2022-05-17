@@ -15,10 +15,8 @@ exports.findAll = (req, res) => {
     .catch((e) => res.send(e));
 };
 // Find a single Song with an id
-exports.findOne = (req, res) => {
-  Song.findOne({ where: { name: req } }).then((data) => {
-    res.send(data);
-  })
+exports.findOne = (req) => {
+  return Song.findOne({ where: { name: req } }).then((data) => {return data})
 };
 // Update a Song by the id in the request
 exports.update = (req, res) => {};

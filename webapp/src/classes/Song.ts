@@ -1,4 +1,4 @@
-class Song {
+export class Song {
     songID!: String;
     name!: String;
     artist!: String;

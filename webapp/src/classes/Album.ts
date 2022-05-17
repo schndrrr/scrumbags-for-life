@@ -1,4 +1,4 @@
-class Album {
+export class Album {
     albumID!: String;
     name!: String;
     artist!: String;

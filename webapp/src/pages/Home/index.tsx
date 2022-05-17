@@ -43,7 +43,6 @@ const data = [
 ];
 
 const Home = () => {
-
     return (
         <section className={'content'}>
             <Header searchActive={true}/>

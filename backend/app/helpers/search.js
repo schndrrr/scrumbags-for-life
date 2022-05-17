@@ -27,7 +27,7 @@ module.exports = (str, token, response, type) => {
                         type: "song"
                     }
                     ret.push(t);
-                    if (songController.findOne(track.id,))
+                    if (songController.findOne(track.id))
                     songController.create(t);
                 })
             } else if (ty == "artist") {

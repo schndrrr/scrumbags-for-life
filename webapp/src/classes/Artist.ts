@@ -1,6 +1,6 @@
-class Artist {
+export class Artist {
     artistID!: String;
-    name!:String;
+    name!: String;
     genre!: String;
     followers!: String;
     popularity!: String;
