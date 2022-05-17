@@ -4,6 +4,11 @@ import {CheckOutlined, DownloadOutlined} from '@ant-design/icons';
 import {Button} from "antd";
 import {Link} from "react-router-dom";
 
+//@TODO implement onDownload function
+const onDownload = () => {
+    console.log('Download succesful')
+}
+
 const OrderSuccessForm = () => {
 
     return (
@@ -19,7 +24,7 @@ const OrderSuccessForm = () => {
                 <h2 className={'order-success-text'}>Deine Musik kann jederzeit im <Link to={'../user'}>Benutzerkonto</Link> <br/>heruntergeladen werden.</h2>
             </div>
             <a href={'../user'}>
-                <Button style={{width:'100%'}} type={'primary'} size={'large'} icon={<DownloadOutlined />}>
+                <Button onClick={onDownload} style={{width:'100%'}} type={'primary'} size={'large'} icon={<DownloadOutlined />}>
                     Download
                 </Button>
             </a>

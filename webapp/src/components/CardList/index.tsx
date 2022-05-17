@@ -3,6 +3,7 @@ import {List, Card} from 'antd';
 import "./card_list.css";
 import Cards from "../Card/index";
 
+//backend data for dynamic rendering
 type Props = {
     data: {
         imgSrc: string;
@@ -23,9 +24,9 @@ const CardList = (props:Props) => {
             grid={{
                 gutter: 16,
                 xs: 1,
-                sm: 1,
+                sm: 2,
                 md: 2,
-                lg: 3,
+                lg: 2,
                 xl: 3,
                 xxl: 4,
             }}

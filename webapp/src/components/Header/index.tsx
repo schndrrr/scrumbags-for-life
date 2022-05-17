@@ -11,6 +11,7 @@ type Props = {
     loggedIn?: boolean
 }
 
+//@TODO search function
 const onSearch = (values:any) => {
     console.log(values);
 }
@@ -19,14 +20,17 @@ const Header = (props:Props) => {
 
     return (
         <div className={"header-container flex-row"}>
+            {/*logo as link to homepage*/}
             <Link className={'flex flex-center'} to={'../'}>
                 <CisumLogo fill={'#F4951E'}/>
             </Link>
+            {/*conditional rendering with/without searchbar*/}
             {props.searchActive &&
             <div className={"search-container"}>
                 <Search onSearch={onSearch} placeholder="Finde deinen Lieblingssong" enterButton maxLength={250} loading={false}/>
             </div>
             }
+            {/*navigation menu*/}
             <div>
                 <Menu className={'header-menu'} mode="horizontal" defaultSelectedKeys={[]} disabledOverflow={true}>
                     {props.loggedIn ?

@@ -8,6 +8,7 @@ const PaymentPicker = () => {
 
     const [value, setValue] = useState(1);
 
+    //allows to change payment method, if available
     const handleChange = (event: any) => {
         setValue(event.target.value);
     };
@@ -20,7 +21,7 @@ const PaymentPicker = () => {
                 <Space direction="vertical">
                     <Radio value={1}>PayPal</Radio>
                     <Radio disabled={true} value={2}>Visa, MasterCard</Radio>
-                    <Radio disabled={false} value={3}>Rechnung</Radio>
+                    <Radio disabled={true} value={3}>Rechnung</Radio>
                 </Space>
             </Radio.Group>
         </div>
