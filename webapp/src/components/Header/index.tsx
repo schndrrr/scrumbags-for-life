@@ -13,8 +13,8 @@ import { searchService } from "../../services/searchService";
 
 type Props = {
     searchActive: boolean,
-    loggedIn?: boolean
-}
+    // loggedIn?: boolean
+    }
 
 //@TODO search function
 const onSearch = (values:any) => {
@@ -38,7 +38,7 @@ const Header = (props:Props) => {
             {/*navigation menu*/}
             <div>
                 <Menu className={'header-menu'} mode="horizontal" defaultSelectedKeys={[]} disabledOverflow={true}>
-                    {props.loggedIn ?
+                    {localStorage.getItem('user') ?
                     <Menu.Item key={'user'}>
                         <Link to={`../user`}>Benutzerkonto</Link>
                     </Menu.Item> :

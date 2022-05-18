@@ -23,6 +23,10 @@ class UserDataService{
     deleteUser(id) {
         return http.delete("/user/${id}")
     }
+
+    checkUser(data) {
+        return http.post("user", data);
+    }
     
 }
 export default new UserDataService();
