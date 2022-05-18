@@ -9,7 +9,7 @@ type LayoutType = Parameters<typeof Form>[0]['layout'];
 
 const LoginForm = () => {
     const [form] = Form.useForm();
-    const [formLayout, setFormLayout] = useState<LayoutType>('horizontal');
+    const [formLayout] = useState<LayoutType>('horizontal');
     const [newUser, setNewUser] = useState(false);
     const navigate = useNavigate();
 
@@ -20,17 +20,18 @@ const LoginForm = () => {
             userservice.createUser(values).then((values) => {
                 // setUser(values.data)
                 localStorage.setItem('user', JSON.stringify(values.data))
-                console.log('Nutzerdaten:' + values.data)
+                console.log('Nutzerdaten:' + JSON.stringify(values.data))
                 navigate('/user')
             })
         //user login
         } else if (!newUser) {
-            userservice.checkUser(values).then((values) => {
-                localStorage.setItem('userID', JSON.stringify(values.data))
-                console.log('Nutzerdaten:' + values.data)
-                navigate('/user')
-                }
-            )
+            // userservice.checkUser(values).then((values) => {
+            //     //@TODO should be data from backend, not set by user
+            //     localStorage.setItem('user', JSON.stringify(values.data))
+            //     console.log('Nutzerdaten:' + JSON.stringify(values.data))
+            //     navigate('/user')
+            //     }
+            // )
         }
     };
 
