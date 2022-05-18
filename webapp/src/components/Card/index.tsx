@@ -8,15 +8,23 @@ type Props = {
     imgSrc: string;
     title: string;
     price: number;
-    description: string;
+    album: string;
     duration?: number;
+    artist: string;
+    // onClick?: any;
 }
+
+
 
 const { Meta } = Card;
 
 const Cards = (props: Props) => {
 
-    const {imgSrc, price, description, title, duration} = props;
+    const addBasket = () => {
+        localStorage.setItem('basket', JSON.stringify(props))
+    }
+
+    const {imgSrc, price, album, artist, title} = props;
 
     return (
               <Card
@@ -30,14 +38,14 @@ const Cards = (props: Props) => {
                 }
                 actions={[
                     <HeartOutlined key="heart" className={"heart-icon"}/>,
-                    <Button type="primary" icon={<ImportOutlined />}>
+                    <Button onClick={addBasket} type="primary" icon={<ImportOutlined />}>
                         {price} €
                     </Button>
                 ]}
             >
                 <Meta
                     title={title}
-                    description={description}
+                    description={artist + ' - ' + album}
                 />
               <div className={"card-player-progressbar"}>
                   {/*player for sound example, skipping doesn't make much sense in single a song player*/}

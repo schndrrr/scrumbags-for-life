@@ -34,7 +34,7 @@ const CardList = (props:Props) => {
             renderItem={item => (
                 <List.Item>
                     {/*<Card title={item.title}>Card content</Card>*/}
-                    <Cards title={item.title} description={item.artist + ' - ' + item.album} price={item.price} duration={item.price} imgSrc={item.imgSrc}/>
+                    <Cards title={item.title} artist={item.artist} album={item.album} price={item.price} duration={item.price} imgSrc={item.imgSrc}/>
                 </List.Item>
             )}
         />

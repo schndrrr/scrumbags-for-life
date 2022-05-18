@@ -3,57 +3,55 @@ import * as React from "react";
 import {List, Avatar} from 'antd';
 import {DeleteOutlined} from '@ant-design/icons';
 
-const data = [
-    {
-        title: 'Feuermelder',
-        description: 'Michael Wendler, Meuerfelder',
-        price: 0.99,
-    },
-    {
-        title: 'Deiner Mutter',
-        description: 'Florian Hager, Mutterwitze',
-        price: 0.99,
-    },
-    {
-        title: 'I love snacks',
-        description: 'Ilvi Löhr, Snacking',
-        price: 0.99,
-    },
-    {
-        title: 'Das sieht scheiße aus',
-        description: 'Thomas Hartmann, Shitstorm',
-        price: 0.99,
-    },
-];
+let basket = [{
+    imgSrc: '',
+    title: '',
+    price: NaN,
+    album: '',
+    artist: '',
+}];
+
+const storageData = localStorage.getItem('basket') + '';
+basket= [JSON.parse(storageData)];
 
 const BasketList = () => {
 
+    let sum = 0;
+    if (localStorage.getItem('basket')) {
+        sum = basket.reduce(function (prev: number, current: { price: string | number; }) {
+            return prev + +current.price
+        }, 0);
+    }
+
     return (
         <div className={'basket-list'}>
+            {localStorage.getItem('basket') &&
             <List
                 itemLayout="horizontal"
-                dataSource={data}
+                dataSource={basket}
                 // renders items based on backend data
                 renderItem={item => (
                     <List.Item>
                         <List.Item.Meta
-                            avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                            title={<a href="../">{item.title}</a>}
-                            description={item.description}
+                            avatar={<Avatar src={item.imgSrc}/>}
+                            title={item.title}
+                            description={item.artist + ' - ' + item.album}
                         />
                         <div>{item.price} €</div>
                         {/*remove item from basket*/}
                         <DeleteOutlined style={{
-                            color:'#F4951E',
-                            fontSize:'16px',
-                            paddingLeft: '8px'}}
+                            color: '#F4951E',
+                            fontSize: '16px',
+                            paddingLeft: '8px'
+                        }}
                         />
                     </List.Item>
                 )}
             />
+            }
             {/*needs to be calculated automatically*/}
             <div className={'order-sum'}>
-                3.96 €
+                {sum}  €
             </div>
         </div>
 
