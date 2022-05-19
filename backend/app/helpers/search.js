@@ -27,8 +27,12 @@ module.exports = (str, token, response, type) => {
                         type: "song"
                     }
                     ret.push(t);
-                    if (songController.findOne(track.id))
-                    songController.create(t);
+                    if (songController.findOne(track.id)) {
+                        console.log("already exists")
+                    } else {
+                        songController.create(t);
+                    }
+
                 })
             } else if (ty == "artist") {
                 res.data.artists.items.forEach(artist => {
@@ -42,7 +46,12 @@ module.exports = (str, token, response, type) => {
                         type: "artist"
                     }
                     ret.push(t);
-                    artistController.create(t);
+                    if (artistController.findOne(artist.id)){
+                        console.log("already exists")
+                    } else {
+                        artistController.create(t);
+                    }
+
                 })
             } else if (ty == "album") {
                 res.data.albums.items.forEach(album => {
@@ -58,7 +67,13 @@ module.exports = (str, token, response, type) => {
                         type: "album"
                     }
                     ret.push(t);
-                    albumController.create(t);
+                    if (!albumController.findOne(album.id)){
+                        console.log("already exists")
+                    
+                    } else {
+                        albumController.create(t);
+                    }
+                    
                 })
             }
         });
