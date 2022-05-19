@@ -34,4 +34,10 @@ exports.delete = (req, res) => {};
 // Delete all User from the database.
 exports.deleteAll = (req, res) => {};
 
+exports.auth = (req, res) => {
+  User.findOne({where: {username: req.body.username, password: req.body.password}}).then((data) =>{
+    res.send(data);
+  })
+};
+
 exports.findAllPublished = (req, res) => {};
