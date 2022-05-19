@@ -12,7 +12,6 @@ const UserDataForm = () => {
         userservice.updateUser(user.id, values).then((values) => {
             // setUser(values.data)
             localStorage.setItem('user', JSON.stringify(values.data))
-            // console.log('Nutzerdaten:' + JSON.stringify(values.data))
         })
     };
 
@@ -63,10 +62,7 @@ const UserDataForm = () => {
                 </Form.Item>
             </Form>
         </div>
-
-
     )
-
 }
 
 export default UserDataForm;

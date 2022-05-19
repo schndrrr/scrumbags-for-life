@@ -46,8 +46,9 @@ app.post("/user", (req, res) => {
     userController.create(req, res);
 });
 
-app.post("/user/update", (req, res) => {
-  userController.update()
+app.post("/user/update/:id", (req, res) => {
+    let id = req.params.id;
+    userController.update(req, res, id);
 })
 
 // returns user for id
@@ -88,6 +89,10 @@ app.get("/artists", async (req, res) => {
     artistController.findAll(req, res);
 });
 
+app.post("/authenticate/",(req, res) => {
+  console.log(req.body);
+  userController.auth(req,res);
+})
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

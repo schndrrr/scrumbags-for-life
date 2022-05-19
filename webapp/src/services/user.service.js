@@ -24,8 +24,8 @@ class UserDataService{
         return http.delete("/user/${id}")
     }
 
-    checkUser(data) {
-        return http.post("user", data);
+    authUser(data) {
+        return http.post("/authenticate/", data);
     }
     
 }

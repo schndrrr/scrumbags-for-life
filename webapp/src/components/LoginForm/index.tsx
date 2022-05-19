@@ -29,13 +29,16 @@ const LoginForm = () => {
             })
         //user login
         } else if (!newUser) {
-            // userservice.checkUser(values).then((values) => {
-            //     //@TODO should be data from backend, not set by user
-            //     localStorage.setItem('user', JSON.stringify(values.data))
-            //     console.log('Nutzerdaten:' + JSON.stringify(values.data))
-            //     navigate('/user')
-            //     }
-            // )
+            userservice.authUser(values).then((values) => {
+                //@TODO should be data from backend, not set by user
+                localStorage.setItem('user', JSON.stringify(values.data))
+                console.log('Nutzerdaten:' + JSON.stringify(values.data))
+                if (window.location.pathname === "/user") {
+                    window.location.reload();
+                } else {
+                    navigate('/user')
+                }
+            })
         }
     };
 
