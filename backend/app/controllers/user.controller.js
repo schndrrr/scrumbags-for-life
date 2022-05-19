@@ -29,10 +29,16 @@ exports.findOne = (req, res) => {
 };
 // Update a User by the id in the request
 exports.update = (req, res, id) => {
-  console.log(req.body);
-  User.update(req.body,   {
-    where: { id: id }}).then((data) => {
-    res.send(data);
+  console.log(req.body, id);
+  User.update(req.body, { where: { id: id }}).then((data) => {
+    console.log(data);
+    if (data[0] == 0 ){
+      res.send({status:400, message:'user not found'})
+    } else {
+      User.findOne({ where: { id: id } }).then((data) => {
+        res.send(data);
+      })
+    }
   })
 
 
