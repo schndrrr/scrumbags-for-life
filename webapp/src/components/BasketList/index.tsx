@@ -18,8 +18,7 @@ let basketTemplate: {
 const BasketList = () => {
     const [basket, setBasket] = useState(basketTemplate);
 
-    const storageData = localStorage.getItem('basket') + '';
-
+    //save basket data in state and watch for changes
     useEffect(() => {
         let tempStorageData = localStorage.getItem('basket') + '';
         basketTemplate = JSON.parse(tempStorageData);
@@ -34,7 +33,6 @@ const BasketList = () => {
     }
 
     const deleteFromBasket = (e:any) => {
-
         const tempBasket = basket;
         const track = basket.find(item => item.id === e.currentTarget.id)
 
@@ -58,7 +56,6 @@ const BasketList = () => {
                             description={item.artist + ' - ' + item.album}
                         />
                         <div>{item.price} €</div>
-                        {/*remove item from basket*/}
                         <DeleteOutlined style={{
                             color: '#F4951E',
                             fontSize: '16px',
@@ -71,15 +68,11 @@ const BasketList = () => {
                 )}
             />
             }
-            {/*needs to be calculated automatically*/}
             <div className={'order-sum'}>
                 {sum}  €
             </div>
         </div>
-
-
     )
-
 }
 
 export default BasketList;
