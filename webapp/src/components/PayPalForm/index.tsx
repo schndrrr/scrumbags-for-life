@@ -21,7 +21,7 @@ const PayPalForm = () => {
             <div className={'flex-col mail-input-wrapper'}>
                 <Form>
                     <Form.Item  name={'email'}  rules={[{ type: 'email' }]}>
-                        <Input className={'ant-input-dark'} defaultValue={'deineEmail@beispiel.com'} size={'large'}/>
+                        <Input className={'ant-input-dark'} defaultValue={'deineEmail@beispiel.com'} size={'large'} type={'email'}/>
                     </Form.Item>
                 </Form>
                 {/*maybe build button in a form item?*/}

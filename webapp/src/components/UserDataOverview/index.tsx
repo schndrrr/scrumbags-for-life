@@ -10,10 +10,10 @@ const UserDataOverview = () => {
     return (
         <div className={'user-data-container flex-col'}>
             <Divider orientation={'left'} className={'data-field-label'}>Kunde</Divider>
-            <div className={'data-field'}>{user.username}</div>
+            {user && <div className={'data-field'}>{user.username}</div>}
             <Divider orientation={'left'} className={'data-field-label'}>Anschrift</Divider>
-            <div className={'data-field'}>{user.street} {user.streetNr}</div>
-            <div className={'data-field'}>{user.postalCode} {user.city}</div>
+            {user && <div className={'data-field'}>{user.street} {user.streetNr}</div>}
+            {user && <div className={'data-field'}>{user.postalCode} {user.city}</div>}
 
         </div>
     )
