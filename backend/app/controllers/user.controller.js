@@ -28,7 +28,9 @@ exports.findOne = (req, res) => {
   })
 };
 // Update a User by the id in the request
-exports.update = (req, res) => {};
+exports.update = (req, res) => {
+
+};
 // Delete a User with the specified id in the request
 exports.delete = (req, res) => {};
 // Delete all User from the database.

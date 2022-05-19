@@ -17,7 +17,7 @@ class UserDataService{
     }
 
     updateUser(id, data) {
-        return http.post(`/users/${id}`, data);
+        return http.post(`/user/update/${id}`, data);
     }
 
     deleteUser(id) {

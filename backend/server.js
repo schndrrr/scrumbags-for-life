@@ -31,9 +31,9 @@ db.sequelize.sync();
 
 // maybe like this
 
-db.sequelize.sync({ force: true }).then(() => {
+/*db.sequelize.sync({ force: true }).then(() => {
     console.log("Drop and re-sync db.");
-});
+});*/
 
 
 // returns all users
@@ -45,6 +45,10 @@ app.get("/users", (req, res) => {
 app.post("/user", (req, res) => {
   userController.create(req, res);
 });
+
+app.post("/user/update", (req, res) => {
+  userController.update()
+})
 
 // returns user for id
 app.get("/user", (req, res) => {
