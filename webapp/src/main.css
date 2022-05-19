@@ -26096,8 +26096,9 @@ div.ant-typography-edit-content.ant-typography-rtl {
   display: inline-block !important;
 }
 body {
-  background-color: #1C0E39 !important;
+  background-color: #443C55 !important;
   color: #fff;
+  overflow-x: hidden;
 }
 h1 {
   color: #F4951E;
