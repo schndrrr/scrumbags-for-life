@@ -1,6 +1,6 @@
-import React, {PropsWithChildren} from "react";
+import React from "react";
 import './card.css';
-import { Card, Button, Progress } from 'antd';
+import { Card, Button, Progress, message } from 'antd';
 import { ImportOutlined, HeartOutlined, StepBackwardOutlined, PlayCircleOutlined, StepForwardOutlined } from '@ant-design/icons';
 
 // backend data
@@ -11,17 +11,45 @@ type Props = {
     album: string;
     duration?: number;
     artist: string;
-    // onClick?: any;
+    id: string;
 }
-
 
 
 const { Meta } = Card;
 
 const Cards = (props: Props) => {
 
-    const addBasket = () => {
-        localStorage.setItem('basket', JSON.stringify(props))
+    const success = () => {
+        message.success('Der Song wurde zum Warenkorb hinzugefügt.');
+    };
+
+    let basket: {
+        imgSrc: string;
+        title: string;
+        price: number;
+        album: string;
+        duration?: number;
+        artist: string;
+        id: string;
+    }[] = [];
+
+    const addtoBasket = () => {
+
+        console.log(props)
+        if (localStorage.getItem('basket')) {
+            const storageData = localStorage.getItem('basket') + '';
+            basket = JSON.parse(storageData);
+            basket.push(props);
+
+            console.log(basket)
+
+            localStorage.setItem('basket', JSON.stringify(basket))
+        } else {
+            basket.push(props);
+            localStorage.setItem('basket', JSON.stringify(basket))
+            console.log(localStorage.getItem('basket'))
+        }
+        success();
     }
 
     const {imgSrc, price, album, artist, title} = props;
@@ -38,7 +66,7 @@ const Cards = (props: Props) => {
                 }
                 actions={[
                     <HeartOutlined key="heart" className={"heart-icon"}/>,
-                    <Button onClick={addBasket} type="primary" icon={<ImportOutlined />}>
+                    <Button onClick={addtoBasket} type="primary" icon={<ImportOutlined />}>
                         {price} €
                     </Button>
                 ]}

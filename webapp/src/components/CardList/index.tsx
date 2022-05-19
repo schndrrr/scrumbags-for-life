@@ -12,6 +12,7 @@ type Props = {
         album: string;
         duration?: number;
         artist: string;
+        id: string;
     }[]
 }
 
@@ -34,7 +35,7 @@ const CardList = (props:Props) => {
             renderItem={item => (
                 <List.Item>
                     {/*<Card title={item.title}>Card content</Card>*/}
-                    <Cards title={item.title} artist={item.artist} album={item.album} price={item.price} duration={item.price} imgSrc={item.imgSrc}/>
+                    <Cards id={item.id} title={item.title} artist={item.artist} album={item.album} price={item.price} duration={item.price} imgSrc={item.imgSrc}/>
                 </List.Item>
             )}
         />

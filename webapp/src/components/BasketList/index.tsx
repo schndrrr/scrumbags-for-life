@@ -2,25 +2,45 @@ import "./basket_list.css";
 import * as React from "react";
 import {List, Avatar} from 'antd';
 import {DeleteOutlined} from '@ant-design/icons';
+import {useEffect, useState} from "react";
 
-let basket = [{
-    imgSrc: '',
-    title: '',
-    price: NaN,
-    album: '',
-    artist: '',
-}];
+let basketTemplate: {
+    imgSrc: string;
+    title: string;
+    price: number;
+    album: string;
+    duration?: number;
+    artist: string;
+    id: string;
+}[] = [];
 
-const storageData = localStorage.getItem('basket') + '';
-basket= [JSON.parse(storageData)];
 
 const BasketList = () => {
+    const [basket, setBasket] = useState(basketTemplate);
 
-    let sum = 0;
+    const storageData = localStorage.getItem('basket') + '';
+
+    useEffect(() => {
+        let tempStorageData = localStorage.getItem('basket') + '';
+        basketTemplate = JSON.parse(tempStorageData);
+        setBasket(basketTemplate);
+    }, [basket])
+
+    let sum: string = '0';
     if (localStorage.getItem('basket')) {
-        sum = basket.reduce(function (prev: number, current: { price: string | number; }) {
-            return prev + +current.price
-        }, 0);
+        sum = basket.reduce(function (prev: number, current: { price: number; }) {
+            return prev + current.price
+        }, 0).toFixed(2);
+    }
+
+    const deleteFromBasket = (e:any) => {
+
+        const tempBasket = basket;
+        const track = basket.find(item => item.id === e.currentTarget.id)
+
+        tempBasket.splice((basket.findIndex(item => item === track)),1);
+        localStorage.setItem('basket', JSON.stringify(tempBasket));
+        setBasket(tempBasket);
     }
 
     return (
@@ -30,8 +50,8 @@ const BasketList = () => {
                 itemLayout="horizontal"
                 dataSource={basket}
                 // renders items based on backend data
-                renderItem={item => (
-                    <List.Item>
+                renderItem={(item)=> (
+                    <List.Item >
                         <List.Item.Meta
                             avatar={<Avatar src={item.imgSrc}/>}
                             title={item.title}
@@ -44,6 +64,8 @@ const BasketList = () => {
                             fontSize: '16px',
                             paddingLeft: '8px'
                         }}
+                        id = {item.id}
+                        onClick={deleteFromBasket}
                         />
                     </List.Item>
                 )}
