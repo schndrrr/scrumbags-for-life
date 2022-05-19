@@ -1,7 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import './card.css';
 import { Card, Button, Progress, message } from 'antd';
-import { ImportOutlined, HeartOutlined, StepBackwardOutlined, PlayCircleOutlined, StepForwardOutlined } from '@ant-design/icons';
+import {
+    ImportOutlined,
+    HeartOutlined,
+    StepBackwardOutlined,
+    PlayCircleOutlined,
+    StepForwardOutlined,
+    ShoppingFilled
+} from '@ant-design/icons';
 
 // backend data
 type Props = {
@@ -18,6 +25,8 @@ type Props = {
 const { Meta } = Card;
 
 const Cards = (props: Props) => {
+
+    const [inBasket,setInBasket] = useState(false);
 
     const success = () => {
         message.success('Der Song wurde zum Warenkorb hinzugefügt.');
@@ -36,19 +45,22 @@ const Cards = (props: Props) => {
     const addtoBasket = () => {
 
         console.log(props)
+        //if basket exist take basket data and add new item
         if (localStorage.getItem('basket')) {
             const storageData = localStorage.getItem('basket') + '';
             basket = JSON.parse(storageData);
             basket.push(props);
-
-            console.log(basket)
-
             localStorage.setItem('basket', JSON.stringify(basket))
-        } else {
+        }
+        //create new basket
+        else {
             basket.push(props);
             localStorage.setItem('basket', JSON.stringify(basket))
             console.log(localStorage.getItem('basket'))
         }
+
+        setInBasket(true);
+        //success message
         success();
     }
 
@@ -66,9 +78,16 @@ const Cards = (props: Props) => {
                 }
                 actions={[
                     <HeartOutlined key="heart" className={"heart-icon"}/>,
-                    <Button onClick={addtoBasket} type="primary" icon={<ImportOutlined />}>
-                        {price} €
-                    </Button>
+                    <div>
+                        {!inBasket ?
+                        <Button onClick={addtoBasket} type="primary" icon={<ImportOutlined />}>
+                            {price} €
+                        </Button> :
+                        <ShoppingFilled key="Cart" className={"heart-icon"}/>
+                        }
+                    </div>
+
+
                 ]}
             >
                 <Meta
