@@ -46,8 +46,9 @@ app.post("/user", (req, res) => {
     userController.create(req, res);
 });
 
-app.post("/user/update", (req, res) => {
-  userController.update()
+app.post("/user/update/:id", (req, res) => {
+    let id = req.params.id;
+    userController.update(req, res, id);
 })
 
 // returns user for id

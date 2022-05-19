@@ -28,7 +28,14 @@ exports.findOne = (req, res) => {
   })
 };
 // Update a User by the id in the request
-exports.update = (req, res) => {
+exports.update = (req, res, id) => {
+  console.log(req.body);
+  User.update(req.body,   {
+    where: { id: id }}).then((data) => {
+    res.send(data);
+  })
+
+
 
 };
 // Delete a User with the specified id in the request
