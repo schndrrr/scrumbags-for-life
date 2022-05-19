@@ -1,12 +1,12 @@
 import React from "react";
-import {Button} from "antd";
+import {Button, message} from "antd";
 import PayPalLogo from "../PayPalLogo";
 import {Form, Input} from "antd";
 import "./paypal_form.css";
 
 //@TODO email check function???
 const checkMail = () => {
-    console.log('Login successful')
+    message.success('Bezahlung erfolgreich.')
 }
 
 const PayPalForm = () => {
@@ -21,7 +21,7 @@ const PayPalForm = () => {
             <div className={'flex-col mail-input-wrapper'}>
                 <Form>
                     <Form.Item  name={'email'}  rules={[{ type: 'email' }]}>
-                        <Input className={'ant-input-dark'} defaultValue={'deineEmail@beispiel.com'} size={'large'}/>
+                        <Input className={'ant-input-dark'} defaultValue={'deineEmail@beispiel.com'} size={'large'} type={'email'}/>
                     </Form.Item>
                 </Form>
                 {/*maybe build button in a form item?*/}

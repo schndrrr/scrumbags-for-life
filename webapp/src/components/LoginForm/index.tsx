@@ -3,18 +3,40 @@ import { Form, Input, Button, Checkbox, Radio } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import "./login_form.css";
 import userservice from "../../services/user.service";
+import {useNavigate} from "react-router-dom";
 
 type LayoutType = Parameters<typeof Form>[0]['layout'];
 
 const LoginForm = () => {
     const [form] = Form.useForm();
-    const [formLayout, setFormLayout] = useState<LayoutType>('horizontal');
+    const [formLayout] = useState<LayoutType>('horizontal');
     const [newUser, setNewUser] = useState(false);
+    const navigate = useNavigate();
 
     //sending form data to backend
-    const onFinish = (values:any) => {       
-       if (newUser){
-        userservice.createUser(values);}
+    const onFinish = (values:any) => {
+        //user registration
+        if (newUser) {
+            userservice.createUser(values).then((values) => {
+                // setUser(values.data)
+                localStorage.setItem('user', JSON.stringify(values.data))
+                console.log('Nutzerdaten:' + JSON.stringify(values.data))
+                if (window.location.pathname === "/user") {
+                    window.location.reload();
+                } else {
+                    navigate('/user')
+                }
+            })
+        //user login
+        } else if (!newUser) {
+            // userservice.checkUser(values).then((values) => {
+            //     //@TODO should be data from backend, not set by user
+            //     localStorage.setItem('user', JSON.stringify(values.data))
+            //     console.log('Nutzerdaten:' + JSON.stringify(values.data))
+            //     navigate('/user')
+            //     }
+            // )
+        }
     };
 
     //function on failing request

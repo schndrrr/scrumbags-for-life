@@ -31,9 +31,9 @@ db.sequelize.sync();
 
 // maybe like this
 
-db.sequelize.sync({ force: true }).then(() => {
-    console.log("Drop and re-sync db.");
-});
+// db.sequelize.sync({ force: false , alter : true }).then(() => {
+//     console.log("Drop and re-sync db.");
+// });
 
 
 // returns all users

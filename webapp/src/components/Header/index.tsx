@@ -5,15 +5,20 @@ import Search from "antd/es/input/Search";
 import { Menu } from 'antd';
 import { ShoppingCartOutlined, LoginOutlined } from '@ant-design/icons';
 import {Link} from "react-router-dom";
+import axios from "axios";
+import { Album } from "../../classes/Album";
+import { Artist } from "../../classes/Artist";
+import { Song } from "../../classes/Song";
+import { searchService } from "../../services/searchService";
 
 type Props = {
     searchActive: boolean,
-    loggedIn?: boolean
-}
+    // loggedIn?: boolean
+    }
 
 //@TODO search function
 const onSearch = (values:any) => {
-    console.log(values);
+    searchService(values);
 }
 
 const Header = (props:Props) => {
@@ -33,7 +38,7 @@ const Header = (props:Props) => {
             {/*navigation menu*/}
             <div>
                 <Menu className={'header-menu'} mode="horizontal" defaultSelectedKeys={[]} disabledOverflow={true}>
-                    {props.loggedIn ?
+                    {localStorage.getItem('user') ?
                     <Menu.Item key={'user'}>
                         <Link to={`../user`}>Benutzerkonto</Link>
                     </Menu.Item> :
