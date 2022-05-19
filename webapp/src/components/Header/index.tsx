@@ -18,6 +18,7 @@ type Props = {
 
 //@TODO search function
 const onSearch = (values:any) => {
+    console.log(values);
     searchService(values);
 }
 
