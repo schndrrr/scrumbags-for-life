@@ -27,12 +27,7 @@ module.exports = (str, token, response, type) => {
                         type: "song"
                     }
                     ret.push(t);
-                    if (songController.findOne(track.id)) {
-                        console.log("already exists")
-                    } else {
-                        songController.create(t);
-                    }
-
+                    songController.upsert(t, {songID: track.id})
                 })
             } else if (ty == "artist") {
                 res.data.artists.items.forEach(artist => {
@@ -46,11 +41,7 @@ module.exports = (str, token, response, type) => {
                         type: "artist"
                     }
                     ret.push(t);
-                    if (artistController.findOne(artist.id)){
-                        console.log("already exists")
-                    } else {
-                        artistController.create(t);
-                    }
+                    artistController.upsert(t, {artistID: artist.id})
 
                 })
             } else if (ty == "album") {
@@ -61,19 +52,13 @@ module.exports = (str, token, response, type) => {
                         artist: album.artists.map(m => m.name).join(", "),
                         genre: "GENERE TEST",
                         songs: album.total_tracks,
-                        // duration: album.duration_ms,
+                        duration: "album.duration_ms",
                         price: album.total_tracks,
                         image: "https://picsum.photos/200/300",
                         type: "album"
                     }
                     ret.push(t);
-                    if (!albumController.findOne(album.id)){
-                        console.log("already exists")
-                    
-                    } else {
-                        albumController.create(t);
-                    }
-                    
+                    albumController.upsert(t, {albumID: album.id})
                 })
             }
         });

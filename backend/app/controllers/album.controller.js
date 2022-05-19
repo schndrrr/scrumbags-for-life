@@ -3,7 +3,9 @@ const Album = db.albums;
 const Op = db.Sequelize.Op;
 // Create and Save a new Album
 exports.create = (req) => {
-  Album.create(req).then(() => {}).catch(error => console.log(error));
+  Album.create(req).then((data) => {
+    console.log(data);
+  }).catch(error => console.log(error));
 };
 // Retrieve all Albums from the database.
 exports.findAll = (req, res) => {
@@ -15,8 +17,10 @@ exports.findAll = (req, res) => {
       .catch((e) => res.send(e));
 };
 // Find a single Album with an id
-exports.findOne = (req, res) => {
-  
+exports.findOne = (condition, res) => {
+  Album.findOne({ where: condition }).then((data) => {
+    res.send(data);
+  }).catch(error => { console.log(error)});
 };
 // Update an Album by the id in the request
 exports.update = (req, res) => {
@@ -34,3 +38,17 @@ exports.deleteAll = (req, res) => {
 exports.findAllPublished = (req, res) => {
   
 };
+
+exports.upsert = (values, condition) => {
+  return Album
+      .findOne({ where: condition })
+      .then((obj) => {
+          // update
+          if(obj)
+              return obj.update(values);
+          // insert
+          return Album.create(values);
+      }).catch(error => {
+        console.log(error);
+      })
+}

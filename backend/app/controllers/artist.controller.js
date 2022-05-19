@@ -15,7 +15,11 @@ exports.findAll = (req, res) => {
     .catch((e) => res.send(e));
 };
 // Find a single Artist with an id
-exports.findOne = (req, res) => {};
+exports.findOne = (condition, res) => {
+  Artist.findOne({ where: condition }).then((data) => {
+    res.send(data);
+  })
+};
 // Update an Artist by the id in the request
 exports.update = (req, res) => {};
 // Delete an Artist with the specified id in the request
@@ -24,3 +28,15 @@ exports.delete = (req, res) => {};
 exports.deleteAll = (req, res) => {};
 
 exports.findAllPublished = (req, res) => {};
+
+exports.upsert = (values, condition) => {
+  return Artist
+      .findOne({ where: condition })
+      .then((obj) => {
+          // update
+          if(obj)
+              return obj.update(values);
+          // insert
+          return Artist.create(values);
+      })
+}

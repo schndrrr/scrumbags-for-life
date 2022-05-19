@@ -15,8 +15,10 @@ exports.findAll = (req, res) => {
     .catch((e) => res.send(e));
 };
 // Find a single Song with an id
-exports.findOne = (req) => {
-  return Song.findOne({ where: { name: req } }).then((data) => {return data})
+exports.findOne = (condition, res) => {
+  return Song.findOne({ where: condition }).then((data) => {
+    res.send(data);
+  });
 };
 // Update a Song by the id in the request
 exports.update = (req, res) => {};
@@ -26,3 +28,15 @@ exports.delete = (req, res) => {};
 exports.deleteAll = (req, res) => {};
 
 exports.findAllPublished = (req, res) => {};
+
+exports.upsert = (values, condition) => {
+  return Song
+      .findOne({ where: condition })
+      .then((obj) => {
+          // update
+          if(obj)
+              return obj.update(values);
+          // insert
+          return Song.create(values);
+      })
+}

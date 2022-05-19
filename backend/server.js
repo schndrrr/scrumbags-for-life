@@ -31,9 +31,9 @@ db.sequelize.sync();
 
 // maybe like this
 
-db.sequelize.sync({ force: true }).then(() => {
-    console.log("Drop and re-sync db.");
-});
+// db.sequelize.sync({ force: true }).then(() => {
+//     console.log("Drop and re-sync db.");
+// });
 
 
 // returns all users
@@ -54,7 +54,7 @@ app.get("/user", (req, res) => {
     } else {
       res.send({message: "no id given"});
     }
-    userController.findOne(id, res);
+    userController.findOne({id: id}, res);
 });
 
 app.get("/search/:q", async (req, res) => {
