@@ -22,8 +22,8 @@ exports.findAll = (req, res) => {
     .catch((e) => res.send(e));
 };
 // Find a single User with an id
-exports.findOne = (req, res) => {
-  User.findOne({ where: { id: req } }).then((data) => {
+exports.findOne = (condition, res) => {
+  User.findOne({ where: condition }).then((data) => {
     res.send(data);
   })
 };
@@ -56,3 +56,15 @@ exports.auth = (req, res) => {
 };
 
 exports.findAllPublished = (req, res) => {};
+
+exports.upsert = (values, condition) => {
+  return User
+      .findOne({ where: condition })
+      .then((obj) => {
+          // update
+          if(obj)
+              return obj.update(values);
+          // insert
+          return User.create(values);
+      })
+}

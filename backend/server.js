@@ -32,9 +32,16 @@ db.sequelize.sync();
 
 // maybe like this
 
+<<<<<<< HEAD
 // db.sequelize.sync({ force: false , alter : true }).then(() => {
 //     console.log("Drop and re-sync db.");
 // });
+=======
+// db.sequelize.sync({ force: true }).then(() => {
+//     console.log("Drop and re-sync db.");
+// });
+
+>>>>>>> 61-FE-servicelasses
 
 // returns all users
 app.get("/users", (req, res) => {
@@ -59,7 +66,7 @@ app.get("/user", (req, res) => {
     } else {
         res.send({message: "no id given"});
     }
-    userController.findOne(id, res);
+    userController.findOne({id: id}, res);
 });
 
 app.get("/search/:q", async (req, res) => {

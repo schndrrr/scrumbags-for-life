@@ -27,8 +27,7 @@ module.exports = (str, token, response, type) => {
                         type: "song"
                     }
                     ret.push(t);
-                    if (songController.findOne(track.id))
-                    songController.create(t);
+                    songController.upsert(t, {songID: track.id})
                 })
             } else if (ty == "artist") {
                 res.data.artists.items.forEach(artist => {
@@ -42,7 +41,8 @@ module.exports = (str, token, response, type) => {
                         type: "artist"
                     }
                     ret.push(t);
-                    artistController.create(t);
+                    artistController.upsert(t, {artistID: artist.id})
+
                 })
             } else if (ty == "album") {
                 res.data.albums.items.forEach(album => {
@@ -52,13 +52,13 @@ module.exports = (str, token, response, type) => {
                         artist: album.artists.map(m => m.name).join(", "),
                         genre: "GENERE TEST",
                         songs: album.total_tracks,
-                        // duration: album.duration_ms,
+                        duration: "album.duration_ms",
                         price: album.total_tracks,
                         image: "https://picsum.photos/200/300",
                         type: "album"
                     }
                     ret.push(t);
-                    albumController.create(t);
+                    albumController.upsert(t, {albumID: album.id})
                 })
             }
         });
