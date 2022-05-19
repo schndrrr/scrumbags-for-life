@@ -1,3 +1,4 @@
+
 const express = require("express");
 const cors = require("cors");
 const axios = require('axios').default;
@@ -9,13 +10,13 @@ const refreshToken = require("./app/helpers/refreshToken");
 const search = require("./app/helpers/search");
 const app = express();
 var corsOptions = {
-  origin: "http://localhost:3000",
+    origin: "http://localhost:3000",
 };
 
 
 let tokenObject = {
-  access_token: 'BQAhOckrXD68piSOp-PMCqITMfvvQgpD2ApwXTD9bQylO366oTI17Qc5RXMnf5gC6zPWUhJVzUHe4u6mz5w',
-  expires_at: new Date('01.01.2000')
+    access_token: 'BQAhOckrXD68piSOp-PMCqITMfvvQgpD2ApwXTD9bQylO366oTI17Qc5RXMnf5gC6zPWUhJVzUHe4u6mz5w',
+    expires_at: new Date('01.01.2000')
 }
 
 app.use(cors(corsOptions));
@@ -35,53 +36,57 @@ db.sequelize.sync();
 //     console.log("Drop and re-sync db.");
 // });
 
-
 // returns all users
 app.get("/users", (req, res) => {
-  userController.findAll(req, res);
+    userController.findAll(req, res);
 });
 
 // creates new user
 app.post("/user", (req, res) => {
-  userController.create(req, res);
+    userController.create(req, res);
 });
+
+app.post("/user/update/:id", (req, res) => {
+    let id = req.params.id;
+    userController.update(req, res, id);
+})
 
 // returns user for id
 app.get("/user", (req, res) => {
     let id;
     if (req.query.id) {
-      id = req.query.id;
+        id = req.query.id;
     } else {
-      res.send({message: "no id given"});
+        res.send({message: "no id given"});
     }
     userController.findOne(id, res);
 });
 
 app.get("/search/:q", async (req, res) => {
-  let q = req.params.q;
-  let type = [];
-  if (req.query.type) {
-    type = req.query.type.split(",");
-  } else {
-    type = ["album", "track", "artist"];
-  }
+    let q = req.params.q;
+    let type = [];
+    if (req.query.type) {
+        type = req.query.type.split(",");
+    } else {
+        type = ["album", "track", "artist"];
+    }
 
-  if(!checkToken(tokenObject)) {
-    tokenObject = await refreshToken();  
-  }
-  search(q, tokenObject.access_token, res, type);
+    if(!checkToken(tokenObject)) {
+        tokenObject = await refreshToken();
+    }
+    search(q, tokenObject.access_token, res, type);
 });
 
 app.get("/songs", async (req, res) => {
-  songController.findAll(req, res);
+    songController.findAll(req, res);
 });
 
 app.get("/albums", async (req, res) => {
-  albumController.findAll(req, res);
+    albumController.findAll(req, res);
 });
 
 app.get("/artists", async (req, res) => {
-  artistController.findAll(req, res);
+    artistController.findAll(req, res);
 });
 
 app.post("/authenticate/",(req, res) => {
@@ -92,5 +97,5 @@ app.post("/authenticate/",(req, res) => {
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+    console.log(`Server is running on port ${PORT}.`);
 });
