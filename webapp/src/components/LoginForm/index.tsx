@@ -21,7 +21,11 @@ const LoginForm = () => {
                 // setUser(values.data)
                 localStorage.setItem('user', JSON.stringify(values.data))
                 console.log('Nutzerdaten:' + JSON.stringify(values.data))
-                navigate('/user')
+                if (window.location.pathname === "/user") {
+                    window.location.reload();
+                } else {
+                    navigate('/user')
+                }
             })
         //user login
         } else if (!newUser) {

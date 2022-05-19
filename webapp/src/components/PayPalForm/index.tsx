@@ -1,12 +1,12 @@
 import React from "react";
-import {Button} from "antd";
+import {Button, message} from "antd";
 import PayPalLogo from "../PayPalLogo";
 import {Form, Input} from "antd";
 import "./paypal_form.css";
 
 //@TODO email check function???
 const checkMail = () => {
-    console.log('Login successful')
+    message.success('Bezahlung erfolgreich.')
 }
 
 const PayPalForm = () => {
