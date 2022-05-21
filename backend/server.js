@@ -6,6 +6,8 @@ const userController = require("./app/controllers/user.controller");
 const songController = require("./app/controllers/song.controller");
 const albumController = require("./app/controllers/album.controller");
 const artistController = require("./app/controllers/artist.controller");
+const boughtController = require("./app/controllers/bought.controller");
+const favoriteController = require("./app/controllers/favorite.controller");
 const refreshToken = require("./app/helpers/refreshToken");
 const search = require("./app/helpers/search");
 const app = express();
@@ -47,6 +49,8 @@ app.post("/user", (req, res) => {
     userController.create(req, res);
 });
 
+
+// updates user with :id
 app.post("/user/update/:id", (req, res) => {
     let id = req.params.id;
     userController.update(req, res, id);
@@ -63,6 +67,8 @@ app.get("/user", (req, res) => {
     userController.findOne({id: id}, res);
 });
 
+
+// returns albums, tracks, and artists for search string :q
 app.get("/search/:q", async (req, res) => {
     let q = req.params.q;
     let type = [];
@@ -78,21 +84,82 @@ app.get("/search/:q", async (req, res) => {
     search(q, tokenObject.access_token, res, type);
 });
 
-app.get("/songs", async (req, res) => {
-    songController.findAll(req, res);
-});
+// app.get("/songs", (req, res) => {
+//     songController.findAll(req, res);
+// });
 
-app.get("/albums", async (req, res) => {
-    albumController.findAll(req, res);
-});
+// app.get("/albums", (req, res) => {
+//     albumController.findAll(req, res);
+// });
 
-app.get("/artists", async (req, res) => {
-    artistController.findAll(req, res);
-});
+// app.get("/artists", (req, res) => {
+//     artistController.findAll(req, res);
+// });
 
+
+// authenticate user 
 app.post("/authenticate/",(req, res) => {
-  console.log(req.body);
   userController.auth(req,res);
+});
+
+
+// creates list of songs that user bought
+app.post("/buy/:id", (req, res) => {
+    let id = req.params.id;
+    req.body.buyIDs.forEach((song) => {
+        let item = {
+            songID: song,
+            userID: id
+        }
+        boughtController.create(item);
+    })
+});
+
+
+// creates new favorite 
+app.post("/favorite/:id", (req, res) => {
+    let id = req.params.id;
+    let item = {
+        songID: req.body.favorite,
+        userID: id
+    }
+    favoriteController.create(item);
+});
+
+
+// returns list of songs which the user set as favorite
+app.get("/favorite/:id", async (req, res) => {
+    let id = req.params.id;
+    favoriteController.findAll({userID: id}, res).then(favorites => {
+        let songs = [];
+        let promise = favorites.map(fav => {
+            return songController.findAll({songID: fav.songID})
+        });
+        Promise.all(promise).then(prom => {
+            prom.forEach(song => {
+                songs.push(song[0]);
+            })
+            res.send(songs);
+        })
+    })
+})
+
+
+// returns list of songs which the user bought
+app.get("/bought/:id", async (req, res) => {
+    let id = req.params.id;
+    boughtController.findAll({userID: id}, res).then(bought => {
+        let songs = [];
+        let promise = bought.map(fav => {
+            return songController.findAll({songID: fav.songID})
+        });
+        Promise.all(promise).then(prom => {
+            prom.forEach(song => {
+                songs.push(song[0]);
+            })
+            res.send(songs);
+        })
+    })
 })
 
 // set port, listen for requests

@@ -23,7 +23,7 @@ module.exports = (str, token, response, type) => {
                         genre: "GENERE TEST",
                         duration: track.duration_ms,
                         price: track.duration_ms / 100,
-                        image: "https://picsum.photos/200/300",
+                        image: track.album.images[0].url,
                         type: "song"
                     }
                     ret.push(t);

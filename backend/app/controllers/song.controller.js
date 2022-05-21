@@ -6,13 +6,8 @@ exports.create = (req) => {
   Song.create(req).then(() => {}).catch(error => console.log(error));
 };
 // Retrieve all Songs from the database.
-exports.findAll = (req, res) => {
-  console.log("get all songs");
-  Song.findAll()
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((e) => res.send(e));
+exports.findAll = (condition, res) => {
+  return Song.findAll({where: condition})
 };
 // Find a single Song with an id
 exports.findOne = (condition, res) => {
