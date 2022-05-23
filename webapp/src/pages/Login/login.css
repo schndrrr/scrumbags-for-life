@@ -2,15 +2,20 @@
     background-color: #1C0E39;
 }
 
-.banner-container-logo {
+.bannerlogin-container-logo {
     width: 800px;
     z-index: -1;
 }
 
-.banner-container-logo-right {
+.bannerlogin-container-logo-right {
     top: 320px;
+    right: -200px;
+    position: absolute;
+    transform: rotate(180deg);
 }
 
-.banner-container-logo-left {
+.bannerlogin-container-logo-left {
     top: 170px;
+    left: -200px;
+    position: absolute;
 }
