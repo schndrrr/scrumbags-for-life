@@ -3,6 +3,7 @@ import "./order_success_form.css";
 import {CheckOutlined, DownloadOutlined} from '@ant-design/icons';
 import {Button} from "antd";
 import {Link} from "react-router-dom";
+import CisumBannerLogo from "../../assets/CISUM_LOGO_800_450_px.png";
 
 //@TODO implement onDownload function
 const onDownload = () => {
@@ -28,6 +29,10 @@ const OrderSuccessForm = () => {
                     Download
                 </Button>
             </a>
+            <div className={'order-container-logo'}>
+                <img src={CisumBannerLogo} height={450} width={800} className={'order-container-logo-left'}/>
+                <img src={CisumBannerLogo} height={450} width={800} className={'order-container-logo-right'}/>
+            </div>
         </div>
     )
 }
