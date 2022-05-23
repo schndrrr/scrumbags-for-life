@@ -26134,6 +26134,7 @@ h3 {
 .data-field-label {
   color: #F4951E !important;
   border-color: #F4951E !important;
+  font-family: 'Bungee', serif;
 }
 .ant-checkbox-wrapper {
   color: rgba(0, 0, 0, 0.85) !important;
