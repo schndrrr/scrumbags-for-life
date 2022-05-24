@@ -1,25 +1,13 @@
 import React, {useState} from "react";
 import './card.css';
-import { Card, Button, Progress, message } from 'antd';
-import {
-    ImportOutlined,
-    HeartOutlined,
-    StepBackwardOutlined,
-    PlayCircleOutlined,
-    StepForwardOutlined,
-    ShoppingFilled
-} from '@ant-design/icons';
+import {Button, Card, message} from 'antd';
+import {HeartFilled, HeartOutlined, ImportOutlined, PlayCircleOutlined, ShoppingFilled} from '@ant-design/icons';
+import {Song} from "../../classes/Song";
+import {useFavorites} from "../../states/favorites.state";
+import axios from "axios";
 
 // backend data
-type Props = {
-    imgSrc: string;
-    title: string;
-    price: number;
-    album: string;
-    duration?: number;
-    artist: string;
-    id: string;
-}
+type Props = Song;
 
 
 const { Meta } = Card;
@@ -32,15 +20,7 @@ const Cards = (props: Props) => {
         message.success('Der Song wurde zum Warenkorb hinzugefügt.');
     };
 
-    let basket: {
-        imgSrc: string;
-        title: string;
-        price: number;
-        album: string;
-        duration?: number;
-        artist: string;
-        id: string;
-    }[] = [];
+    let basket: Song[] = [];
 
     const addtoBasket = () => {
 
@@ -64,7 +44,28 @@ const Cards = (props: Props) => {
         success();
     }
 
-    const {imgSrc, price, album, artist, title} = props;
+    const favorites = useFavorites(state => state.favorites);
+    const setAddFavorites = useFavorites(state => state.setAddFavorites);
+    const setDeleteFavorites = useFavorites(state => state.setDeleteFavorite);
+
+    const storageData = localStorage.getItem('user') + '';
+    const user = JSON.parse(storageData);
+
+    const addToFavorites = (e: any) => {
+        const id = e.currentTarget.id;
+        setAddFavorites(id);
+        console.log(favorites);
+        axios.post("http://localhost:8080/favorite/" + user.id, {favorite:id})
+    };
+
+    const deleteFromFavorites = (e:any) => {
+        const id = e.currentTarget.id;
+        let tempData = favorites.filter((f: string) =>
+            f !== id)
+        setDeleteFavorites(tempData);
+    }
+
+    const {image, price, album, artist, name, songID} = props;
 
     return (
               <Card
@@ -73,11 +74,21 @@ const Cards = (props: Props) => {
                     <img
                         height={280}
                         alt="example"
-                        src={imgSrc}
+                        src={image}
                     />
                 }
                 actions={[
-                    <HeartOutlined key="heart" className={"heart-icon"}/>,
+                    <div>
+                        {favorites.includes(songID) ?
+                        <HeartFilled
+                            onClick={deleteFromFavorites}
+                            key="heart" className={"heart-icon"} id={songID}/>
+                        :
+                        <HeartOutlined
+                            onClick={addToFavorites}
+                            key="heart" className={"heart-icon"} id={songID}/>
+                        }
+                    </div>,
                     <div>
                         {!inBasket ?
                         <Button onClick={addtoBasket} type="primary" icon={<ImportOutlined />}>
@@ -91,7 +102,7 @@ const Cards = (props: Props) => {
                 ]}
             >
                 <Meta
-                    title={title}
+                    title={name}
                     description={artist + ' - ' + album}
                 />
               <div className={"card-player-progressbar"}>

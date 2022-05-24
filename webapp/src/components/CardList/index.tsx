@@ -2,18 +2,11 @@ import React from "react";
 import {List, Card} from 'antd';
 import "./card_list.css";
 import Cards from "../Card/index";
+import {Song} from '../../classes/Song';
 
 //backend data for dynamic rendering
 type Props = {
-    data: {
-        imgSrc: string;
-        title: string;
-        price: number;
-        album: string;
-        duration?: number;
-        artist: string;
-        id: string;
-    }[]
+    data: Song[]
 }
 
 const CardList = (props:Props) => {
@@ -35,7 +28,7 @@ const CardList = (props:Props) => {
             renderItem={item => (
                 <List.Item>
                     {/*<Card title={item.title}>Card content</Card>*/}
-                    <Cards id={item.id} title={item.title} artist={item.artist} album={item.album} price={item.price} duration={item.price} imgSrc={item.imgSrc}/>
+                    <Cards songID={item.songID} name={item.name} artist={item.artist} album={item.album} price={item.price} image={item.image}/>
                 </List.Item>
             )}
         />

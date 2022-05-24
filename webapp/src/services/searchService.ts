@@ -4,7 +4,7 @@ import { Artist } from "../classes/Artist";
 import { Song } from "../classes/Song";
 
 export const searchService = (searchString: string) => {
-        axios.get("http://localhost:8080/search/" + searchString).then(res => {
+        return axios.get("http://localhost:8080/search/" + searchString + "?type=track").then(res => {
             let searchResponse = res.data.map((r: any) => {
                 if (r.type == "album") {
                     let album: Album = r;
@@ -19,6 +19,8 @@ export const searchService = (searchString: string) => {
             })
             return searchResponse;
         }).then(res => {
+            console.log('Response from searchService: ');
             console.log(res);
+            return res;
         })
 }
