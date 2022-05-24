@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './card.css';
 import {Button, Card, message} from 'antd';
 import {HeartFilled, HeartOutlined, ImportOutlined, PlayCircleOutlined, ShoppingFilled} from '@ant-design/icons';
 import {Song} from "../../classes/Song";
 import {useFavorites} from "../../states/favorites.state";
 import axios from "axios";
+import {useBasket} from "../../states/basket.state";
 
 // backend data
 type Props = Song;
@@ -13,44 +14,43 @@ type Props = Song;
 const { Meta } = Card;
 
 const Cards = (props: Props) => {
+    const favorites = useFavorites(state => state.favorites);
+    const setAddFavorites = useFavorites(state => state.setAddFavorites);
+    const setDeleteFavorites = useFavorites(state => state.setDeleteFavorite);
+    const basket = useBasket(state => state.basket);
+    const setBasket = useBasket(state => state.setBasket);
 
-    const [inBasket,setInBasket] = useState(false);
+    const storageData = localStorage.getItem('user') + '';
+    const user = JSON.parse(storageData);
 
     const success = () => {
         message.success('Der Song wurde zum Warenkorb hinzugefügt.');
     };
 
-    let basket: Song[] = [];
-
-    const addtoBasket = () => {
-
-        console.log(props)
+    //add item to basket
+    let tempBasket: Song[] = [];
+    const addToBasket = (e:any) => {
         //if basket exist take basket data and add new item
         if (localStorage.getItem('basket')) {
             const storageData = localStorage.getItem('basket') + '';
-            basket = JSON.parse(storageData);
-            basket.push(props);
-            localStorage.setItem('basket', JSON.stringify(basket))
+            tempBasket = JSON.parse(storageData);
+            tempBasket.push(props);
+            localStorage.setItem('basket', JSON.stringify(tempBasket));
         }
         //create new basket
         else {
-            basket.push(props);
-            localStorage.setItem('basket', JSON.stringify(basket))
+            tempBasket.push(props);
+            localStorage.setItem('basket', JSON.stringify(tempBasket))
             console.log(localStorage.getItem('basket'))
         }
 
-        setInBasket(true);
+        setBasket(e.currentTarget.id);
+        console.log(basket);
         //success message
         success();
     }
 
-    const favorites = useFavorites(state => state.favorites);
-    const setAddFavorites = useFavorites(state => state.setAddFavorites);
-    const setDeleteFavorites = useFavorites(state => state.setDeleteFavorite);
-
-    const storageData = localStorage.getItem('user') + '';
-    const user = JSON.parse(storageData);
-
+    //add item to favorites
     const addToFavorites = (e: any) => {
         const id = e.currentTarget.id;
         setAddFavorites(id);
@@ -58,6 +58,7 @@ const Cards = (props: Props) => {
         axios.post("http://localhost:8080/favorite/" + user.id, {favorite:id})
     };
 
+    //delete item from fravorites
     const deleteFromFavorites = (e:any) => {
         const id = e.currentTarget.id;
         let tempData = favorites.filter((f: string) =>
@@ -90,11 +91,11 @@ const Cards = (props: Props) => {
                         }
                     </div>,
                     <div>
-                        {!inBasket ?
-                        <Button onClick={addtoBasket} type="primary" icon={<ImportOutlined />}>
-                            {price} €
-                        </Button> :
-                        <ShoppingFilled key="Cart" className={"heart-icon"}/>
+                        {basket.includes(songID) ?
+                            <ShoppingFilled key="Cart" className={"heart-icon"}/> :
+                            <Button onClick={addToBasket} id={songID} type="primary" icon={<ImportOutlined />}>
+                                {price} €
+                            </Button>
                         }
                     </div>
 

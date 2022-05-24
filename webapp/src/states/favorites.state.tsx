@@ -9,7 +9,7 @@ type State = {
 export const useFavorites = create<State>(set =>({
     //initial state
    favorites: [],
-   //setSate function
+   //setState function
     setAddFavorites: (data) => set(state => ({favorites: [...state.favorites, data]} )),
     setDeleteFavorite: (data) => set(state => ({favorites: data})),
 }));
