@@ -1,0 +1,21 @@
+.login-background-design {
+    background-color: #1C0E39;
+}
+
+.bannerlogin-container-logo {
+    width: 800px;
+    z-index: -1;
+}
+
+.bannerlogin-container-logo-right {
+    top: 320px;
+    right: -200px;
+    position: absolute;
+    transform: rotate(180deg);
+}
+
+.bannerlogin-container-logo-left {
+    top: 170px;
+    left: -200px;
+    position: absolute;
+}

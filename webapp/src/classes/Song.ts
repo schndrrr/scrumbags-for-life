@@ -1,9 +1,10 @@
 export class Song {
-    songID!: String;
-    name!: String;
-    artist!: String;
-    genre!: String;
-    duration!: String;
-    price!: String;
-    image!: String;
+    songID!: string;
+    name!: string;
+    artist!: string;
+    genre?: string;
+    duration?: string;
+    price!: number;
+    image!: string;
+    album!: string;
 }

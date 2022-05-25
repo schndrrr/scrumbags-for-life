@@ -130,7 +130,7 @@ app.get("/favorite/:id", async (req, res) => {
             prom.forEach(song => {
                 songs.push(song[0]);
             })
-            res.send(songs);
+            res.send(songs.filter(f => f));
         })
     })
 })

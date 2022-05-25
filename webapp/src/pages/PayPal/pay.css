@@ -1,0 +1,17 @@
+.pay-container-logo {
+    width: 800px;
+    z-index: -1;
+}
+
+.pay-container-logo-left {
+    top: 170px;
+    left: -200px;
+    position: absolute;
+}
+
+.pay-container-logo-right {
+    top: 320px;
+    right: -200px;
+    position: absolute;
+    transform: rotate(180deg);
+}

@@ -5,24 +5,23 @@ import Search from "antd/es/input/Search";
 import { Menu } from 'antd';
 import { ShoppingCartOutlined, LoginOutlined } from '@ant-design/icons';
 import {Link} from "react-router-dom";
-import axios from "axios";
-import { Album } from "../../classes/Album";
-import { Artist } from "../../classes/Artist";
-import { Song } from "../../classes/Song";
 import { searchService } from "../../services/searchService";
+import {useSearchSong} from "../../states/songResponse.state";
 
 type Props = {
-    searchActive: boolean,
-    // loggedIn?: boolean
+    searchActive: boolean
     }
 
 //@TODO search function
-const onSearch = (values:any) => {
-    console.log(values);
-    searchService(values);
-}
 
 const Header = (props:Props) => {
+
+    const setSongResult = useSearchSong(state => state.setSongResult);
+
+    const onSearch = async (values:any) => {
+        const response = await searchService(values);
+        setSongResult(response);
+    }
 
     return (
         <div className={"header-container flex-row"}>
