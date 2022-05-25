@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Form, Input, Button, Checkbox, Radio } from 'antd';
+import {Form, Input, Button, Checkbox, Radio, message} from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 import "./login_form.css";
 import userservice from "../../services/user.service";
@@ -12,6 +12,10 @@ const LoginForm = () => {
     const [formLayout] = useState<LayoutType>('horizontal');
     const [newUser, setNewUser] = useState(false);
     const navigate = useNavigate();
+
+    const error = () => {
+        message.error('Nutzer oder Passwort ist nicht korrekt!');
+    };
 
     //sending form data to backend
     const onFinish = (values:any) => {
@@ -30,13 +34,17 @@ const LoginForm = () => {
         //user login
         } else if (!newUser) {
             userservice.authUser(values).then((values) => {
-                //@TODO should be data from backend, not set by user
-                localStorage.setItem('user', JSON.stringify(values.data))
-                console.log('Nutzerdaten:' + JSON.stringify(values.data))
+                if (values.data.status === 200) {
+                localStorage.setItem('user', JSON.stringify(values.data.user))
+                console.log('Nutzerdaten:' + JSON.stringify(values.data.user))
                 if (window.location.pathname === "/user") {
                     window.location.reload();
                 } else {
                     navigate('/user')
+                }
+                } if (values.data.status === 400){
+                    error();
+                    console.log('error 400')
                 }
             })
         }

@@ -160,15 +160,21 @@ app.get("/bought/:id", async (req, res) => {
     let id = req.params.id;
     boughtController.findAll({userID: id}, res).then(bought => {
         let songs = [];
-        let promise = bought.map(fav => {
-            return songController.findAll({songID: fav.songID})
-        });
-        Promise.all(promise).then(prom => {
-            prom.forEach(song => {
-                songs.push(song[0]);
+        if (bought) {
+            console.log(bought);
+            let promise = bought.map(fav => {
+                return songController.findAll({songID: fav.songID})
+            });
+            Promise.all(promise).then(prom => {
+                prom.forEach(song => {
+                    songs.push(song[0]);
+                })
+                res.send(songs);
             })
+        } else {
             res.send(songs);
-        })
+        }
+
     })
 })
 

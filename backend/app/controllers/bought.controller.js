@@ -7,7 +7,7 @@ exports.create = (req) => {
 };
 // Retrieve all Albums from the database.
 exports.findAll = (condition, res) => {
-  return Bought.findOne({ where: condition }).then((data) => {
+  return Bought.findAll({ where: condition }).then((data) => {
     return data;
   }).catch(error => { console.log(error)});
 };
