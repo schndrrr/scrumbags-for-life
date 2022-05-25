@@ -70,10 +70,10 @@ const Cards = (props: Props) => {
 
     return (
               <Card
-                style={{ width: 280}}
+                style={{ width: 230}}
                 cover={
                     <img
-                        height={208}
+                        height={230}
                         alt="example"
                         src={image}
                     />

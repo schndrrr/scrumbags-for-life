@@ -20,19 +20,19 @@ const Imprint = () => {
                             <div className={"imprint-team-block"}>
                                 <div className={"imprint-team-container"}>
                                      <div className={"imprint-team-case"}>
-                                         <p className={"imprint-team-name"}>Geschäftsführung: <br/> <b>Tillman Koch</b></p>
+                                         <p className={"imprint-team-name"}>Projektleitung, Frontend<br/> <b>Tillman Koch</b></p>
                                          <div className={"imprint-team-img-block"}>
                                             <img src={CISUM_Team} height={250} width={270}/>
                                          </div>
                                      </div>
                                      <div className={"imprint-team-case"}>
-                                         <p className={"imprint-team-name"}> Designerin/Frontend: <br/> <b>Ilse Löhr</b></p>
+                                         <p className={"imprint-team-name"}> Design, Frontend<br/> <b>Ilse Löhr</b></p>
                                          <div className={"imprint-team-img-block"}>
                                              <img src={CISUM_Team} height={250} width={270}/>
                                          </div>
                                      </div>
                                       <div className={"imprint-team-case"}>
-                                         <p className={"imprint-team-name"}>Frontend: <br/> <b>Niklas Dreger</b></p>
+                                         <p className={"imprint-team-name"}>Frontend<br/> <b>Niklas Dreger</b></p>
                                           <div className={"imprint-team-img-block"}>
                                               <img src={CISUM_Team} height={250} width={270}/>
                                           </div>
@@ -40,19 +40,19 @@ const Imprint = () => {
                                 </div>
                                 <div className={"imprint-team-container"}>
                                     <div className={"imprint-team-case"}>
-                                         <p className={"imprint-team-name"}>Backend: <br/> <b>Johann Schneider</b></p>
+                                         <p className={"imprint-team-name"}>Backend<br/> <b>Johann Schneider</b></p>
                                         <div className={"imprint-team-img-block"}>
                                             <img src={CISUM_Team} height={250} width={270}/>
                                         </div>
                                     </div>
                                     <div className={"imprint-team-case"}>
-                                        <p className={"imprint-team-name"}>Backend: <br/> <b>Johann Georg Nitzsche</b></p>
+                                        <p className={"imprint-team-name"}>Backend<br/> <b>Johann Georg Nitzsche</b></p>
                                         <div className={"imprint-team-img-block"}>
                                             <img src={CISUM_Team} height={250} width={270}/>
                                         </div>
                                     </div>
                                     <div className={"imprint-team-case"}>
-                                            <p className={"imprint-team-name"}>Backend: <br/> <b>Florian Hager</b></p>
+                                            <p className={"imprint-team-name"}>Backend<br/> <b>Florian Hager</b></p>
                                         <div className={"imprint-team-img-block"}>
                                             <img src={CISUM_Team} height={250} width={270}/>
                                         </div>
