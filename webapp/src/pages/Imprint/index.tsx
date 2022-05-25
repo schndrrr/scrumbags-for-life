@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import "./imprint.css";
-import CISUM_Team from "../../assets/Team.png"
+import CISUM_Team from "../../assets/Team.png";
 
 
 const Imprint = () => {

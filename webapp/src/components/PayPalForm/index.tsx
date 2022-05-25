@@ -13,7 +13,9 @@ const PayPalForm = () => {
 
     const onTransaction = () => {
         console.log('onTransaction clicked');
-        axios.post("http://localhost:8080/buy/" + user.id, {basket})
+        console.log(basket);
+        axios.post("http://localhost:8080/buy/" + user.id, {buyIDs:basket});
+        localStorage.removeItem('basket');
     }
 
     return (

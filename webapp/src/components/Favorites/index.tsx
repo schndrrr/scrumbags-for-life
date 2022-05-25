@@ -1,16 +1,16 @@
-import {Avatar, Button, List, message} from "antd";
-import {ShoppingCartOutlined, HeartFilled, ImportOutlined, ShoppingFilled} from "@ant-design/icons";
+import {Avatar, List, message} from "antd";
+import {HeartFilled, ShoppingCartOutlined, ShoppingFilled} from "@ant-design/icons";
 import * as React from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import {Song} from "../../classes/Song";
-import {useEffect, useState} from "react";
 import {useBasket} from "../../states/basket.state";
 import {useFavorites} from "../../states/favorites.state";
 
 const Favorites = () => {
     const storageData = localStorage.getItem('user') + '';
     const user = JSON.parse(storageData);
-    const [allFavorites, setAllFavorites] = useState([])
+    const [allFavorites, setAllFavorites] = useState([]);
 
     const basket = useBasket(state => state.basket);
     const setBasket = useBasket(state => state.setBasket);
@@ -51,15 +51,14 @@ const Favorites = () => {
 
     //get favorites from backend
     const getAllFavorites = async () => {
-        const response = await axios.get("http://localhost:8080/favorite/" + user.id).then(
+        return await axios.get("http://localhost:8080/favorite/" + user.id).then(
             (res) => {
                 console.log('Response from allFav: ');
                 console.log(res);
                 setAllFavorites(res.data);
             }
-        )
-        return response;
-    }
+        );
+    };
 
     //delete item from fravorites
     const deleteFromFavorites = (e:any) => {
@@ -67,10 +66,10 @@ const Favorites = () => {
         let tempData = favorites.filter((f: string) =>
             f !== id)
         setDeleteFavorites(tempData);
-    }
+    };
 
 
-    useEffect(() => {getAllFavorites()},[])
+    useEffect(() => {getAllFavorites()},[]);
 
     return (
         <div className={'basket-list'}>
