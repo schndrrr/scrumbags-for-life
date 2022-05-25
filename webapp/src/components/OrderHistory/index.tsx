@@ -37,7 +37,7 @@ const OrderHistory = () => {
                             paddingRight: '15px'}}
                         />
                         <List.Item.Meta
-                            avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+                            avatar={<Avatar src={item.image}/>}
                             title={<a href="../">{item.name}</a>}
                         />
                         <div>{item.price} €</div>
