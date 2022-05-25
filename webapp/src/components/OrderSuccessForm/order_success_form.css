@@ -10,3 +10,20 @@
 .order-success-text {
     text-align: center;
 }
+
+.order-container-logo {
+    z-index: -1;
+}
+
+.order-container-logo-left {
+    top: 200px;
+    left: -180px;
+    position: absolute;
+}
+
+.order-container-logo-right {
+    top: 350px;
+    right: -180px;
+    position: absolute;
+    transform: rotate(180deg);
+}

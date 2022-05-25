@@ -7,13 +7,15 @@ import UserDataOverview from "../../components/UserDataOverview";
 import PaymentPicker from "../../components/PaymentPicker";
 import {Button} from "antd";
 import {Link} from "react-router-dom";
+import {useBasket} from "../../states/basket.state";
+import axios from "axios";
 
 //@TODO onTransaction function
-const onTransaction = () => {
-    console.log('onTransaction')
-}
+
 
 const Basket = () => {
+
+
 
     return (
         <section className={'content'}>
@@ -25,7 +27,7 @@ const Basket = () => {
                             <UserDataOverview/>
                             <PaymentPicker/>
                         </div>
-                        <Button onClick={onTransaction} type={'primary' } size={'large'}>
+                        <Button type={'primary' } size={'large'}>
                             <Link to={'../payment'}>Bezahlvorgang abschließen</Link>
                         </Button>
                     </div>

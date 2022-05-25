@@ -3,42 +3,56 @@ import * as React from "react";
 import {List, Avatar} from 'antd';
 import {DeleteOutlined} from '@ant-design/icons';
 import {useEffect, useState} from "react";
+import {useBasket} from "../../states/basket.state";
 
 let basketTemplate: {
-    imgSrc: string;
-    title: string;
+    image: string;
+    name: string;
     price: number;
     album: string;
     duration?: number;
     artist: string;
-    id: string;
+    songID: string;
 }[] = [];
 
 
 const BasketList = () => {
-    const [basket, setBasket] = useState(basketTemplate);
+    const [dataBasket, setDataBasket] = useState(basketTemplate);
+    const basket = useBasket(state => state.basket);
+    const setDeleteBasket = useBasket(state => state.setDeleteBasket);
 
     //save basket data in state and watch for changes
     useEffect(() => {
         let tempStorageData = localStorage.getItem('basket') + '';
         basketTemplate = JSON.parse(tempStorageData);
-        setBasket(basketTemplate);
-    }, [basket])
+        setDataBasket(basketTemplate);
+    }, [dataBasket])
 
     let sum: string = '0';
     if (localStorage.getItem('basket')) {
-        sum = basket.reduce(function (prev: number, current: { price: number; }) {
-            return prev + current.price
+        sum = dataBasket.reduce(function (prev: number, current: { price: number|string; }) {
+            if (typeof current.price === "string"){
+                let tempPrice = current.price + '';
+                return prev + parseFloat(tempPrice)
+            } else {
+                return prev + current.price
+            }
+
+
         }, 0).toFixed(2);
     }
 
     const deleteFromBasket = (e:any) => {
-        const tempBasket = basket;
-        const track = basket.find(item => item.id === e.currentTarget.id)
+        const tempBasket = dataBasket;
+        const track = dataBasket.find(item => item.songID === e.currentTarget.id)
 
-        tempBasket.splice((basket.findIndex(item => item === track)),1);
+        tempBasket.splice((dataBasket.findIndex(item => item === track)),1);
         localStorage.setItem('basket', JSON.stringify(tempBasket));
-        setBasket(tempBasket);
+        setDataBasket(tempBasket);
+
+        let tempData = basket.filter((f: string) =>
+            f !== e.currentTarget.id);
+        setDeleteBasket(tempData);
     }
 
     return (
@@ -46,13 +60,13 @@ const BasketList = () => {
             {localStorage.getItem('basket') &&
             <List
                 itemLayout="horizontal"
-                dataSource={basket}
+                dataSource={dataBasket}
                 // renders items based on backend data
                 renderItem={(item)=> (
                     <List.Item >
                         <List.Item.Meta
-                            avatar={<Avatar src={item.imgSrc}/>}
-                            title={item.title}
+                            avatar={<Avatar src={item.image}/>}
+                            title={item.name}
                             description={item.artist + ' - ' + item.album}
                         />
                         <div>{item.price} €</div>
@@ -61,7 +75,7 @@ const BasketList = () => {
                             fontSize: '16px',
                             paddingLeft: '8px'
                         }}
-                        id = {item.id}
+                        id = {item.songID}
                         onClick={deleteFromBasket}
                         />
                     </List.Item>

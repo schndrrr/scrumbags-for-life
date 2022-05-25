@@ -22,7 +22,7 @@ module.exports = (str, token, response, type) => {
                         artist: track.artists.map(m => m.name).join(", "),
                         genre: "GENERE TEST",
                         duration: track.duration_ms,
-                        price: track.duration_ms / 100,
+                        price: (track.duration_ms / 100000).toFixed(2),
                         image: track.album.images[0].url,
                         type: "song"
                     }
