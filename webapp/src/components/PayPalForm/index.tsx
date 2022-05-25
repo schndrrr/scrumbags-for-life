@@ -13,6 +13,7 @@ const PayPalForm = () => {
 
     const onTransaction = () => {
         console.log('onTransaction clicked');
+        console.log(basket);
         axios.post("http://localhost:8080/buy/" + user.id, {basket})
     }
 
