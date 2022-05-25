@@ -73,7 +73,7 @@ const Cards = (props: Props) => {
                 style={{ width: 280}}
                 cover={
                     <img
-                        height={280}
+                        height={208}
                         alt="example"
                         src={image}
                     />
