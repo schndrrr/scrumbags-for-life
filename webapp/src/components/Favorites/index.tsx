@@ -44,7 +44,7 @@ const Favorites = () => {
         }
 
         setBasket(props.songID);
-        console.log('basket: ' + basket);
+        console.log('Item added to basket: ' + basket);
         //success message
         success();
     }

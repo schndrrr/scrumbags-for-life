@@ -45,7 +45,7 @@ const Cards = (props: Props) => {
         }
 
         setBasket(e.currentTarget.id);
-        console.log(basket);
+        console.log('Item added to basket: ' + basket);
         //success message
         success();
     }

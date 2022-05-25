@@ -3,13 +3,18 @@ import {Button, message} from "antd";
 import PayPalLogo from "../PayPalLogo";
 import {Form, Input} from "antd";
 import "./paypal_form.css";
-
-//@TODO email check function???
-const checkMail = () => {
-    message.success('Bezahlung erfolgreich.')
-}
+import {useBasket} from "../../states/basket.state";
+import axios from "axios";
 
 const PayPalForm = () => {
+
+    const user = JSON.parse(localStorage.getItem('user')+'');
+    const basket = useBasket(state => state.basket);
+
+    const onTransaction = () => {
+        console.log('onTransaction clicked');
+        axios.post("http://localhost:8080/buy/" + user.id, {basket})
+    }
 
     return (
         <div className={'form-container flex-col'}>
@@ -25,7 +30,7 @@ const PayPalForm = () => {
                     </Form.Item>
                 </Form>
                 {/*maybe build button in a form item?*/}
-                <Button onClick={checkMail} type={'primary'} size={'large'}>
+                <Button onClick={onTransaction} type={'primary'} size={'large'}>
                     <a href={'../ordersuccess'}>Bezahlung via PayPal abschließen</a>
                 </Button>
             </div>
