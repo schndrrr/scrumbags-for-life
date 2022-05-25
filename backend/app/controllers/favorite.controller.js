@@ -34,8 +34,10 @@ exports.delete = (condition, res) => {
   })
 };
 // Delete all Albums from the database.
-exports.deleteAll = (condition, res) => {
-  Favorite.destroy({where: condition});
+exports.deleteAll = (condition) => {
+  Favorite.destroy({where: condition}).then(r => {
+    console.log(r)
+  }).catch(error => console.log(error));
 };
 
 exports.findAllPublished = (req, res) => {

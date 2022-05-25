@@ -48,11 +48,11 @@ exports.update = (req, res, id) => {
 
 };
 // Delete a User with the specified id in the request
-exports.delete = (condition, res) => {
-  User.destroy({where: condition}).then((r) => {
+exports.delete = (id, res) => {
+  User.destroy({where: {id: id}}).then((r) => {
     if (r > 0) {
-      favoriteController.deleteAll(condition, res);
-      boughtController.deleteAll(condition, res);
+      favoriteController.deleteAll({userID: id});
+      boughtController.deleteAll({userID: id});
       res.send({status: 200, message: "success"})
     } else {
       res.send({status: 400, message: "nothing to delete"})
@@ -63,9 +63,17 @@ exports.delete = (condition, res) => {
 exports.deleteAll = (req, res) => {};
 
 exports.auth = (req, res) => {
-  User.findOne({where: {username: req.body.username, password: req.body.password}}).then((data) =>{
-    res.send(data);
-  })
+  if (req.body.username && req.body.password) {
+    User.findOne({where: {username: req.body.username, password: req.body.password}}).then((data) =>{
+      if (data) {
+        res.send({status: 200, user: data });
+      } else {
+        res.send({status: 400, message: "password or username wrong"});
+      }
+    })
+  } else {
+    res.send({status: 400, message: "make sure to put username and password in body"})
+  }
 };
 
 exports.findAllPublished = (req, res) => {};

@@ -52,7 +52,7 @@ app.post("/user", (req, res) => {
 // deletes user 
 app.delete("/user/:id", (req, res) => {
     let id = req.params.id;
-    userController.delete({userID: id});
+    userController.delete(id, res);
 })
 
 
