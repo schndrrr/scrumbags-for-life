@@ -30,8 +30,15 @@ const BasketList = () => {
 
     let sum: string = '0';
     if (localStorage.getItem('basket')) {
-        sum = dataBasket.reduce(function (prev: number, current: { price: number; }) {
-            return prev + current.price
+        sum = dataBasket.reduce(function (prev: number, current: { price: number|string; }) {
+            if (typeof current.price === "string"){
+                let tempPrice = current.price + '';
+                return prev + parseFloat(tempPrice)
+            } else {
+                return prev + current.price
+            }
+
+
         }, 0).toFixed(2);
     }
 

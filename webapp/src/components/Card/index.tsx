@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import './card.css';
 import {Button, Card, message} from 'antd';
 import {HeartFilled, HeartOutlined, ImportOutlined, PlayCircleOutlined, ShoppingFilled} from '@ant-design/icons';
@@ -66,7 +66,7 @@ const Cards = (props: Props) => {
         setDeleteFavorites(tempData);
     }
 
-    const {image, price, album, artist, name, songID} = props;
+    const {image, price, artist, name, songID} = props;
 
     return (
               <Card
@@ -104,7 +104,7 @@ const Cards = (props: Props) => {
             >
                 <Meta
                     title={name}
-                    description={artist + ' - ' + album}
+                    description={artist}
                 />
               <div className={"card-player-progressbar"}>
                   {/*player for sound example, skipping doesn't make much sense in single a song player*/}
