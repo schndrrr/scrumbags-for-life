@@ -24,12 +24,18 @@ exports.update = (req, res) => {
   
 };
 // Delete an Album with the specified id in the request
-exports.delete = (req, res) => {
-  
+exports.delete = (condition, res) => {
+  Favorite.destroy({where: condition}).then(r => {
+    if (r > 0) {
+      res.send({status: 200, message: "success"})
+    } else {
+      res.send({status: 400, message: "nothing to delete"})
+    }
+  })
 };
 // Delete all Albums from the database.
-exports.deleteAll = (req, res) => {
-  
+exports.deleteAll = (condition, res) => {
+  Favorite.destroy({where: condition});
 };
 
 exports.findAllPublished = (req, res) => {

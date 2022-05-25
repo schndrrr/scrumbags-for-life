@@ -13,7 +13,7 @@ class UserDataService{
     }
 
     getUser(id) {
-        return http.get(`/user?id=${id}`);
+        return http.get(`/user/${id}`);
     }
 
     updateUser(id, data) {

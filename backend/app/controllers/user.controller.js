@@ -1,6 +1,9 @@
 const db = require("../models");
 const User = db.users;
 const Op = db.Sequelize.Op;
+
+const favoriteController = require("./favorite.controller");
+const boughtController = require("./bought.controller");
 // Create and Save a new User
 exports.create = (req, res) => {
   console.log("creating new user");
@@ -45,7 +48,17 @@ exports.update = (req, res, id) => {
 
 };
 // Delete a User with the specified id in the request
-exports.delete = (req, res) => {};
+exports.delete = (condition, res) => {
+  User.destroy({where: condition}).then((r) => {
+    if (r > 0) {
+      favoriteController.deleteAll(condition, res);
+      boughtController.deleteAll(condition, res);
+      res.send({status: 200, message: "success"})
+    } else {
+      res.send({status: 400, message: "nothing to delete"})
+    }
+  })
+};
 // Delete all User from the database.
 exports.deleteAll = (req, res) => {};
 

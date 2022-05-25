@@ -26,8 +26,8 @@ exports.delete = (req, res) => {
   
 };
 // Delete all Albums from the database.
-exports.deleteAll = (req, res) => {
-  
+exports.deleteAll = (condition, res) => {
+  Bought.destroy({where: condition});
 };
 
 exports.findAllPublished = (req, res) => {

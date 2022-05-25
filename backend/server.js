@@ -49,6 +49,12 @@ app.post("/user", (req, res) => {
     userController.create(req, res);
 });
 
+// deletes user 
+app.delete("/user/:id", (req, res) => {
+    let id = req.params.id;
+    userController.delete({userID: id});
+})
+
 
 // updates user with :id
 app.post("/user/update/:id", (req, res) => {
@@ -57,11 +63,9 @@ app.post("/user/update/:id", (req, res) => {
 })
 
 // returns user for id
-app.get("/user", (req, res) => {
-    let id;
-    if (req.query.id) {
-        id = req.query.id;
-    } else {
+app.get("/user/:id", (req, res) => {
+    let id = req.params.id;
+    if (!id) {
         res.send({message: "no id given"});
     }
     userController.findOne({id: id}, res);
@@ -103,19 +107,6 @@ app.post("/authenticate/",(req, res) => {
 });
 
 
-// creates list of songs that user bought
-app.post("/buy/:id", (req, res) => {
-    let id = req.params.id;
-    req.body.buyIDs.forEach((song) => {
-        let item = {
-            songID: song,
-            userID: id
-        }
-        boughtController.create(item);
-    })
-});
-
-
 // creates new favorite 
 app.post("/favorite/:id", (req, res) => {
     let id = req.params.id;
@@ -143,6 +134,25 @@ app.get("/favorite/:id", async (req, res) => {
         })
     })
 })
+
+app.delete("/favorite/:id", (req, res) => {
+    let id = req.params.id;
+    favoriteController.delete({userID: id, songID: req.body.songID }, res);
+})
+
+
+
+// creates list of songs that user bought
+app.post("/buy/:id", (req, res) => {
+    let id = req.params.id;
+    req.body.buyIDs.forEach((song) => {
+        let item = {
+            songID: song,
+            userID: id
+        }
+        boughtController.create(item);
+    })
+});
 
 
 // returns list of songs which the user bought
