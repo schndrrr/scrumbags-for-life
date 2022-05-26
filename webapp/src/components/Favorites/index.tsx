@@ -51,7 +51,7 @@ const Favorites = () => {
 
     //get favorites from backend
     const getAllFavorites = async () => {
-        return await axios.get("http://localhost:8080/favorite/" + user.id).then(
+        return await axios.get("https://cisum-musicstore.herokuapp.com/favorite/" + user.id).then(
             (res) => {
                 console.log('Response from allFav: ');
                 console.log(res);

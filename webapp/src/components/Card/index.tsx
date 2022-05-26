@@ -55,7 +55,7 @@ const Cards = (props: Props) => {
         const id = e.currentTarget.id;
         setAddFavorites(id);
         console.log(favorites);
-        axios.post("http://localhost:8080/favorite/" + user.id, {favorite:id})
+        axios.post("https://cisum-musicstore.herokuapp.com/favorite/" + user.id, {favorite:id})
     };
 
     //delete item from fravorites

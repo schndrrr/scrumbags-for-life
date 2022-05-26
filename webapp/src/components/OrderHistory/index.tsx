@@ -13,7 +13,7 @@ const OrderHistory = () => {
 
     //get orders from backend
     const getOrders = async () => {
-        return await axios.get("http://localhost:8080/bought/" + user.id).then(
+        return await axios.get("https://cisum-musicstore.herokuapp.com/bought/" + user.id).then(
             (res) => {
                 console.log('Response from allOrders: ');
                 console.log(res);
