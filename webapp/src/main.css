@@ -26140,3 +26140,9 @@ h3 {
 .ant-card-meta-description {
   color: rgba(0, 0, 0, 0.85);
 }
+.ant-popover-message {
+  color: #F4951E;
+}
+.ant-popover-buttons .ant-btn-default span {
+  color: #F4951E;
+}

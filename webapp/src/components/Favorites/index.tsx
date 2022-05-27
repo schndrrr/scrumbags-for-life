@@ -65,7 +65,9 @@ const Favorites = () => {
         const id = e.currentTarget.id;
         let tempData = favorites.filter((f: string) =>
             f !== id)
-        setDeleteFavorites(tempData);
+        // axios.delete("https://cisum-musicstore.herokuapp.com/favorite/" + user.id, {data:id}).then(()=>{
+        //     setDeleteFavorites(tempData)
+        // })
     };
 
 
