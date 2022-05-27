@@ -4,6 +4,7 @@ import * as React from "react";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {Song} from "../../classes/Song";
+import {Link} from "react-router-dom";
 
 
 const OrderHistory = () => {
@@ -31,11 +32,13 @@ const OrderHistory = () => {
                 dataSource={order}
                 renderItem={(item:Song) => (
                     <List.Item>
-                        <DownloadOutlined style={{
+                        <Link to="/files/sample.mp3" target="_blank" download>
+                            <DownloadOutlined style={{
                             color:'#F4951E',
                             fontSize:'24px',
                             paddingRight: '15px'}}
-                        />
+                            />
+                        </Link>
                         <List.Item.Meta
                             avatar={<Avatar src={item.image}/>}
                             title={<a href="../">{item.name}</a>}
