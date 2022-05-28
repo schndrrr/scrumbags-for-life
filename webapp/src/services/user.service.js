@@ -21,7 +21,7 @@ class UserDataService{
     }
 
     deleteUser(id) {
-        return http.delete("/user/${id}")
+        return http.delete(`/user/${id}`);
     }
 
     authUser(data) {

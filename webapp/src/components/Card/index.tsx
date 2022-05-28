@@ -53,6 +53,7 @@ const Cards = (props: Props) => {
     //add item to favorites
     const addToFavorites = (e: any) => {
         const id = e.currentTarget.id;
+        //add to state
         setAddFavorites(id);
         console.log(favorites);
         axios.post("https://cisum-musicstore.herokuapp.com/favorite/" + user.id, {favorite:id})
@@ -61,9 +62,12 @@ const Cards = (props: Props) => {
     //delete item from fravorites
     const deleteFromFavorites = (e:any) => {
         const id = e.currentTarget.id;
+        //delete from state
         let tempData = favorites.filter((f: string) =>
             f !== id)
-        setDeleteFavorites(tempData);
+        // axios.delete("https://cisum-musicstore.herokuapp.com/favorite/" + user.id, {data:id}).then(()=>{
+        //     setDeleteFavorites(tempData)
+        // })
     }
 
     const {image, price, artist, name, songID} = props;

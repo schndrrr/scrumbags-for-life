@@ -23,10 +23,11 @@ const LoginForm = () => {
         if (newUser) {
             userservice.createUser(values).then((values) => {
                 // setUser(values.data)
-                localStorage.setItem('user', JSON.stringify(values.data))
-                console.log('Nutzerdaten:' + JSON.stringify(values.data))
+                localStorage.setItem('user', JSON.stringify(values.data));
+                console.log('Nutzerdaten:' + JSON.stringify(values.data));
                 if (window.location.pathname === "/user") {
                     window.location.reload();
+                    console.log("reload");
                 } else {
                     navigate('/user')
                 }
