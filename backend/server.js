@@ -98,7 +98,7 @@ app.get("/search/:q", async (req, res) => {
 
 // app.get("/artists", (req, res) => {
 //     artistController.findAll(req, res);
-// });
+// });u
 
 
 // authenticate user 
