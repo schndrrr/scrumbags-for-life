@@ -15,7 +15,8 @@
   "devDependencies": {},
   "scripts": {
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku_deployment": "git add . && git commit -am \"auto commit\" && git push heroku master"
   },
   "keywords": [
     "nodejs"

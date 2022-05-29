@@ -1,11 +1,16 @@
 import * as React from "react";
-import { Form, Input, Button } from 'antd';
+import {Form, Input, Button, Popconfirm, message} from 'antd';
 import "./user-data-form.css";
 import userservice from "../../services/user.service";
+import {useNavigate} from "react-router-dom";
 
 const UserDataForm = () => {
     const storageData = localStorage.getItem('user') + '';
     const user = JSON.parse(storageData);
+    const navigate = useNavigate();
+    const error = () => {
+        message.error('Der Nutzer wurde gelöscht.');
+    };
 
     const onFinish = (values:any) => {
         //update Request
@@ -14,6 +19,18 @@ const UserDataForm = () => {
             localStorage.setItem('user', JSON.stringify(values.data))
         })
     };
+
+    const deleteUser = () => {
+        console.log(user.id);
+        userservice.deleteUser(user.id).then(() => {
+            // logout
+            localStorage.removeItem('user')
+        }).then(()=>{
+            navigate('/');
+        }).then(()=>{
+            error()
+        })
+    }
 
     return (
         <div className={''}>
@@ -52,10 +69,15 @@ const UserDataForm = () => {
                 </Form.Item>
                 <Form.Item
                     wrapperCol={{
-                        offset: 16,
+                        offset: 15,
                         span: 16,
                     }}
                 >
+                    <Popconfirm placement="topLeft" title={"Möchten Sie den Nutzer wirklich löschen?"} onConfirm={deleteUser} okText="Ja" cancelText="Nein">
+                        <Button type="default" htmlType="submit" className={"delete-button"}>
+                            Nutzer löschen
+                        </Button>
+                    </Popconfirm>
                     <Button type="primary" htmlType="submit">
                         Speichern
                     </Button>

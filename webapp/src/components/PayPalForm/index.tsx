@@ -6,6 +6,7 @@ import "./paypal_form.css";
 import {useBasket} from "../../states/basket.state";
 import axios from "axios";
 
+
 const PayPalForm = () => {
 
     const user = JSON.parse(localStorage.getItem('user')+'');
@@ -14,7 +15,7 @@ const PayPalForm = () => {
     const onTransaction = () => {
         console.log('onTransaction clicked');
         console.log(basket);
-        axios.post("http://localhost:8080/buy/" + user.id, {buyIDs:basket});
+        axios.post("https://cisum-musicstore.herokuapp.com/buy/" + user.id, {buyIDs:basket});
         localStorage.removeItem('basket');
     }
 
