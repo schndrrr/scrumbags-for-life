@@ -12,7 +12,7 @@ const refreshToken = require("./app/helpers/refreshToken");
 const search = require("./app/helpers/search");
 const app = express();
 var corsOptions = {
-    origin: "http://localhost:3000",
+    origin: "https://cisum-musicstore.web.app/",
 };
 
 
@@ -137,7 +137,11 @@ app.get("/favorite/:id", async (req, res) => {
 
 app.delete("/favorite/:id", (req, res) => {
     let id = req.params.id;
-    favoriteController.delete({userID: id, songID: req.body.songID }, res);
+    if (id) {
+        favoriteController.delete({userID: id, songID: req.body.songID }, res);
+    } else {
+        res.send({status: 400, message: "user is not logged in"});
+    }
 })
 
 

@@ -65,9 +65,9 @@ const Cards = (props: Props) => {
         //delete from state
         let tempData = favorites.filter((f: string) =>
             f !== id)
-        // axios.delete("https://cisum-musicstore.herokuapp.com/favorite/" + user.id, {data:id}).then(()=>{
-        //     setDeleteFavorites(tempData)
-        // })
+        axios.delete("https://cisum-musicstore.herokuapp.com/favorite/" + user.id, {data: {songID: id}}).then(()=>{
+            setDeleteFavorites(tempData)
+        })
     }
 
     const {image, price, artist, name, songID} = props;
