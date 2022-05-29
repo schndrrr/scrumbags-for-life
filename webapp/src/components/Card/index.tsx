@@ -74,14 +74,14 @@ const Cards = (props: Props) => {
 
     return (
               <Card
-                style={{ width: 230}}
-                cover={
-                    <img
-                        height={230}
-                        alt="example"
-                        src={image}
-                    />
-                }
+                style={{ width: 280}}
+                // cover={
+                //     <img
+                //         height={230}
+                //         alt="example"
+                //         src={image}
+                //     />
+                // }
                 actions={[
                     <div>
                         {favorites.includes(songID) ?
@@ -106,21 +106,13 @@ const Cards = (props: Props) => {
 
                 ]}
             >
-                <Meta
+                {/* <Meta
                     title={name}
                     description={artist}
-                />
+                /> */}
               <div className={"card-player-progressbar"}>
-                  {/*player for sound example, skipping doesn't make much sense in single a song player*/}
-                  <div className={"card-player"}>
-                    {/*<StepBackwardOutlined className={"card-player-icon"}/>*/}
-                    <PlayCircleOutlined className={"card-player-icon"}/>
-                    {/*<StepForwardOutlined className={"card-player-icon"}/>*/}
-                  </div>
-                  {/*time progress, is it needed?*/}
-                  {/*<div className={"card-progressbar"}>*/}
-                  {/*    <Progress percent={80} showInfo={false}/>*/}
-                  {/*</div>*/}
+                  {/* player for sound example, skipping doesn't make much sense in single a song player*/}
+                  <iframe src={"https://open.spotify.com/embed/track/" + songID + "?utm_source=generator&theme=0"} width="100%" height="330" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
               </div>
             </Card>
     )

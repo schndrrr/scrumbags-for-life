@@ -19,7 +19,11 @@
 }
 
 .ant-card-body {
-    padding-bottom: 10px;
+    padding-bottom: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+    background-color: rgb(29 29 29);
+    border-radius: 15px 15px 0px 0px;
 }
 
 .card-player-progressbar {
@@ -40,7 +44,8 @@
 }
 
 .ant-card-actions {
-    border-radius: 15px;
+    border-radius: 0px 0px 15px 15px;
+    background-color: #443b55;
 }
 
 .ant-card-cover img {
