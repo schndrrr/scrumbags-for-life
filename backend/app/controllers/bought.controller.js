@@ -1,31 +1,31 @@
 const db = require("../models");
 const Bought = db.boughts;
 const Op = db.Sequelize.Op;
-// Create and Save a new Album
+// Create and Save a new bought songs
 exports.create = (req) => {
   Bought.create(req).then((data) => {}).catch(error => console.log(error));
 };
-// Retrieve all Albums from the database.
+// Retrieve all bought songs from the database.
 exports.findAll = (condition, res) => {
   return Bought.findAll({ where: condition }).then((data) => {
     return data;
   }).catch(error => { console.log(error)});
 };
-// Find a single Album with an id
+// Find a single bought song with an id
 exports.findOne = (condition, res) => {
   Bought.findOne({ where: condition }).then((data) => {
     res.send(data);
   }).catch(error => { console.log(error)});
 };
-// Update an Album by the id in the request
+// Update an bought song by the id in the request
 exports.update = (req, res) => {
   
 };
-// Delete an Album with the specified id in the request
+// Delete a bought song with the specified id in the request
 exports.delete = (req, res) => {
   
 };
-// Delete all Albums from the database.
+// Delete all bought songs from the database.
 exports.deleteAll = (condition) => {
   Bought.destroy({where: condition}).then(r => {
     console.log(r)
