@@ -11,9 +11,10 @@ const favoriteController = require("./app/controllers/favorite.controller");
 const refreshToken = require("./app/helpers/refreshToken");
 const search = require("./app/helpers/search");
 const app = express();
-var corsOptions = {
-    origin: "https://cisum-musicstore.web.app/",
-};
+
+// var corsOptions = {
+//     origin: "https://cisum-musicstore.web.app",
+// };
 
 
 let tokenObject = {
@@ -21,7 +22,7 @@ let tokenObject = {
     expires_at: new Date('01.01.2000')
 }
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 // parse requests of content-type - application/json
 app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
@@ -187,3 +188,4 @@ const PORT = process.env.PORT || 8080;
 app.listen(process.env.PORT || PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
+
