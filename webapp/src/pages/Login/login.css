@@ -1,30 +1,21 @@
-.radiobtn-closeform {
-    display: flex;
-    padding-bottom: 20px;
-    justify-content: space-between;
+.login-background-design {
+    background-color: #1C0E39;
 }
 
-.ant-radio-button-wrapper:focus-within {
-    color: #F4951E;
-}
-
-.close-form{
-    color: #F4951E;
-    font-size: 18px;
-}
-
-.holdform{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.formbox {
-    padding: 42px 24px 50px;
-    background-color: #fff;
-    color: #000000d9;
-    border-bottom: 1px solid rgba(0,0,0,.06);
-    height: 420px;
+.bannerlogin-container-logo {
     width: 800px;
+    z-index: -1;
+}
+
+.bannerlogin-container-logo-right {
+    top: 320px;
+    right: -200px;
+    position: absolute;
+    transform: rotate(180deg);
+}
+
+.bannerlogin-container-logo-left {
+    top: 170px;
+    left: -200px;
+    position: absolute;
 }

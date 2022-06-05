@@ -1,0 +1,35 @@
+.radiobtn-closeform {
+    display: flex;
+    padding-bottom: 20px;
+    justify-content: space-between;
+}
+
+.ant-radio-button-wrapper:focus-within {
+    color: #F4951E;
+}
+
+.close-form{
+    color: #F4951E;
+    font-size: 18px;
+}
+
+.holdform{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.formbox {
+    padding: 42px 24px 50px;
+    background-color: #fff;
+    color: #000000d9;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+    height: 420px;
+    width: 800px;
+    position: relative;
+}
+
+.ant-input-dark #basic_password {
+    color:black !important;
+}

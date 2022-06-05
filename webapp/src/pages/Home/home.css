@@ -1,0 +1,15 @@
+.home-container {
+    padding: 20px 0;
+    flex: 1;
+    justify-content: flex-start;
+}
+
+@media all and (min-width: 1000px) {
+    .home-container {
+        padding: 20px 200px;
+    }
+}
+
+.ant-message {
+    color: rgba(0,0,0,0.85)
+}

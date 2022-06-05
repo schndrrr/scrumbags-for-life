@@ -5,75 +5,40 @@ import Search from "antd/es/input/Search";
 import { Menu } from 'antd';
 import { ShoppingCartOutlined, LoginOutlined } from '@ant-design/icons';
 import {Link} from "react-router-dom";
+import { searchService } from "../../services/searchService";
+import {useSearchSong} from "../../states/songResponse.state";
 
 type Props = {
-    searchActive: boolean,
-    loggedIn?: boolean
-}
+    searchActive: boolean
+    }
 
-// type MenuItem = Required<MenuProps>['items'][number];
-//
-// function getItem(
-//     label: React.ReactNode,
-//     key?: React.Key | null,
-//     icon?: React.ReactNode,
-//     children?: MenuItem[],
-// ): MenuItem {
-//     return {
-//         key,
-//         icon,
-//         children,
-//         label,
-//     } as MenuItem;
-// }
-//
-// const items: MenuProps['items']  = [
-//
-//     getItem(
-//         <Link to={`../login`}>Login</Link>,
-//         'login',
-//         <LoginOutlined/>
-//     ),
-//     getItem(
-//         <Link to={`../`}>Shop</Link>,
-//         'shop',
-//     ),
-//     getItem(
-//         <Link to={`../basket`}>Warenkorb</Link>,
-//         'basket',
-//         <ShoppingCartOutlined />,
-//     ),
-//     getItem(
-//         <Link to={`../imprint`}>Impressum</Link>,
-//         'imprint',
-//     ),
-// ];
+//@TODO search function
 
 const Header = (props:Props) => {
 
-    return (
-        // <div className={"header-container flex-row"}>
-        //     <CisumLogo fill={'#F4951E'}/>
-        //     {props.searchActive &&
-        //     <div className={"search-container"}>
-        //         <Search placeholder="Finde deinen Lieblingssong" enterButton maxLength={250} loading={false}/>
-        //     </div>
-        //     }
-        //     <div>
-        //         <Menu className={'header-menu'} mode="horizontal" items={items} defaultSelectedKeys={[]} disabledOverflow={true}/>
-        //     </div>
-        // </div>
+    const setSongResult = useSearchSong(state => state.setSongResult);
 
+    const onSearch = async (values:any) => {
+        const response = await searchService(values);
+        setSongResult(response);
+    }
+
+    return (
         <div className={"header-container flex-row"}>
-            <CisumLogo fill={'#F4951E'}/>
+            {/*logo as link to homepage*/}
+            <Link className={'flex flex-center'} to={'../'}>
+                <CisumLogo fill={'#F4951E'}/>
+            </Link>
+            {/*conditional rendering with/without searchbar*/}
             {props.searchActive &&
             <div className={"search-container"}>
-                <Search placeholder="Finde deinen Lieblingssong" enterButton maxLength={250} loading={false}/>
+                <Search onSearch={onSearch} placeholder="Finde deinen Lieblingssong" enterButton maxLength={250} loading={false}/>
             </div>
             }
+            {/*navigation menu*/}
             <div>
                 <Menu className={'header-menu'} mode="horizontal" defaultSelectedKeys={[]} disabledOverflow={true}>
-                    {props.loggedIn ?
+                    {localStorage.getItem('user') ?
                     <Menu.Item key={'user'}>
                         <Link to={`../user`}>Benutzerkonto</Link>
                     </Menu.Item> :

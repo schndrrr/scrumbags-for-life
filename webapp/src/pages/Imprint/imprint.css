@@ -1,0 +1,70 @@
+.imprint-container {
+    flex: 1;
+    justify-content: flex-start;
+    padding: 30px 0;
+    margin: 0 250px;
+}
+
+.imprint-team-heading {
+    color: white;
+}
+
+.imprint-team-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.imprint-team-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 40px;
+}
+
+.imprint-team-case {
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 365px;
+    height: 385px;
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 60px;
+}
+
+.imprint-team-case b {
+    font-size: 16px;
+}
+
+.imprint-team-name {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.imprint-text-container {
+    font-size: 25px;
+    border-top-style: solid;
+    border-top-color: #F4951E;
+    padding: 10px 35px;
+    display: flex;
+    justify-content: start;
+}
+
+.imprint-team-img-block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.imprint-team-img-block img{
+    border-radius: 8px;
+    box-shadow: 13px 14px 15px rgba(0, 0, 0, 0.1);
+}
+
+.imprint-text {
+    color: white;
+    font-size: 14px;
+}
